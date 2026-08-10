@@ -1,143 +1,167 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>My Music</title>
+    <title>My Music</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: white;
-    background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.75)),
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            background:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.80)),
                 url("background.jpg") center/cover fixed;
-}
+        }
 
-.container {
-    width: 90%;
-    max-width: 800px;
-    margin: auto;
-    padding: 30px 0;
-}
+        .header {
+            text-align: center;
+            padding: 25px 15px 10px;
+        }
 
-.header {
-    text-align: center;
-    margin-bottom: 25px;
-}
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            text-shadow: 0 3px 10px black;
+        }
 
-.header h1 {
-    font-size: 38px;
-    margin: 10px 0;
-}
+        .date-time {
+            text-align: center;
+            margin: 10px auto 20px;
+        }
 
-.date-time {
-    background: rgba(0,0,0,.55);
-    border-radius: 15px;
-    padding: 12px;
-    margin-bottom: 25px;
-    text-align: center;
-}
+        #liveDate {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
 
-#liveDate {
-    font-size: 18px;
-}
+        #liveTime {
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-#liveTime {
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: 5px;
-}
+        .now-playing {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
 
-.now-playing {
-    background: rgba(255,255,255,.12);
-    backdrop-filter: blur(10px);
-    border-radius: 18px;
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-}
+        #song-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-#song-title {
-    font-size: 22px;
-    margin-bottom: 15px;
-}
+        audio {
+            width: 100%;
+        }
 
-audio {
-    width: 100%;
-}
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
 
-.song {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(255,255,255,.12);
-    margin: 10px 0;
-    padding: 14px 18px;
-    border-radius: 14px;
-}
+        button {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            background: white;
+            color: black;
+        }
 
-.song span {
-    font-size: 17px;
-}
+        button:hover {
+            transform: scale(1.05);
+        }
 
-.song button {
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-    cursor: pointer;
-}
+        #playlist {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto 40px;
+        }
 
-.controls {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 15px;
-}
+        .song-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.12);
+        }
 
-.controls button {
-    border: none;
-    padding: 10px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-}
+        .song-name {
+            font-size: 17px;
+        }
 
-@media (max-width: 600px) {
-    .header h1 {
-        font-size: 28px;
-    }
+        .song-item button {
+            padding: 9px 15px;
+            font-size: 14px;
+        }
 
-    .container {
-        width: 94%;
-    }
-}
-</style>
+        .active {
+            background: rgba(255,255,255,0.25);
+        }
+
+        @media (max-width: 600px) {
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            #liveTime {
+                font-size: 23px;
+            }
+
+            #song-title {
+                font-size: 20px;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-<div class="container">
 
     <div class="header">
         <h1>🎵 MY MUSIC 🎵</h1>
     </div>
 
     <div class="date-time">
-        <div id="liveDate">Date</div>
-        <div id="liveTime">Time</div>
+        <div id="liveDate"></div>
+        <div id="liveTime"></div>
     </div>
 
     <div class="now-playing">
-        <div id="song-title">Song 1</div>
+
+        <div id="song-title">
+            🎵 Song 1
+        </div>
 
         <audio id="audio" controls></audio>
 
@@ -145,135 +169,210 @@ audio {
             <button onclick="previousSong()">⏮️ Previous</button>
             <button onclick="nextSong()">⏭️ Next</button>
         </div>
+
     </div>
 
     <div id="playlist"></div>
 
-</div>
 
-<script>
+    <script>
 
-const songs = [
-    { title: "Song 1", src: "song (1).mp3" },
-    { title: "Song 2", src: "song (2).mp3" },
-    { title: "Song 3", src: "song (3).mp3" },
-    { title: "Song 4", src: "song (4).mp3" },
-    { title: "Song 5", src: "song (5).mp3" },
-    { title: "Song 6", src: "song (6).mp3" },
-    { title: "Song 7", src: "song (7).mp3" },
-    { title: "Song 8", src: "song (8).mp3" },
-    { title: "Song 9", src: "song (9).mp3" }
-];
+        /* =========================
+           35 SONGS
+        ========================= */
 
-let currentSong = 0;
+        const songs = [];
 
-const audio = document.getElementById("audio");
-const title = document.getElementById("song-title");
-const playlist = document.getElementById("playlist");
+        for (let i = 1; i <= 35; i++) {
+
+            songs.push({
+                title: "Song " + i,
+                src: "song (" + i + ").mp3"
+            });
+
+        }
 
 
-// SONG PLAY FUNCTION
-function playSong(index, autoPlay = true) {
+        /* =========================
+           MUSIC PLAYER
+        ========================= */
 
-    currentSong = index;
+        let currentSong = 0;
 
-    audio.src = songs[index].src;
-    title.textContent = "🎵 " + songs[index].title;
+        const audio = document.getElementById("audio");
+        const title = document.getElementById("song-title");
+        const playlist = document.getElementById("playlist");
 
-    if (autoPlay) {
-        audio.play().catch(error => {
-            console.log("Play button दबाकर गाना शुरू करें।");
+
+        /* Song play function */
+
+        function playSong(index) {
+
+            currentSong = index;
+
+            audio.src = songs[index].src;
+
+            title.textContent = "🎵 " + songs[index].title;
+
+            audio.play().catch(function(error) {
+                console.log("पहले Play button दबाएँ:", error);
+            });
+
+            updatePlaylist();
+        }
+
+
+        /* =========================
+           AUTOMATIC NEXT SONG
+        ========================= */
+
+        audio.addEventListener("ended", function() {
+
+            currentSong++;
+
+            /* आखिरी song के बाद फिर Song 1 */
+
+            if (currentSong >= songs.length) {
+                currentSong = 0;
+            }
+
+            playSong(currentSong);
+
         });
-    }
-}
 
 
-// AUTOMATIC NEXT SONG
-audio.addEventListener("ended", function() {
+        /* =========================
+           NEXT BUTTON
+        ========================= */
 
-    currentSong++;
+        function nextSong() {
 
-    if (currentSong >= songs.length) {
-        currentSong = 0;
-    }
+            currentSong++;
 
-    playSong(currentSong, true);
-});
+            if (currentSong >= songs.length) {
+                currentSong = 0;
+            }
 
-
-// NEXT BUTTON
-function nextSong() {
-
-    currentSong++;
-
-    if (currentSong >= songs.length) {
-        currentSong = 0;
-    }
-
-    playSong(currentSong, true);
-}
+            playSong(currentSong);
+        }
 
 
-// PREVIOUS BUTTON
-function previousSong() {
+        /* =========================
+           PREVIOUS BUTTON
+        ========================= */
 
-    currentSong--;
+        function previousSong() {
 
-    if (currentSong < 0) {
-        currentSong = songs.length - 1;
-    }
+            currentSong--;
 
-    playSong(currentSong, true);
-}
+            if (currentSong < 0) {
+                currentSong = songs.length - 1;
+            }
 
-
-// CREATE PLAYLIST
-songs.forEach((song, index) => {
-
-    const div = document.createElement("div");
-
-    div.className = "song";
-
-    div.innerHTML = `
-        <span>🎵 ${song.title}</span>
-        <button onclick="playSong(${index}, true)">▶️</button>
-    `;
-
-    playlist.appendChild(div);
-});
+            playSong(currentSong);
+        }
 
 
-// FIRST SONG
-playSong(0, false);
+        /* =========================
+           CREATE PLAYLIST
+        ========================= */
+
+        function createPlaylist() {
+
+            playlist.innerHTML = "";
+
+            songs.forEach(function(song, index) {
+
+                const item = document.createElement("div");
+
+                item.className = "song-item";
+
+                item.innerHTML = `
+                    <span class="song-name">
+                        🎵 ${song.title}
+                    </span>
+
+                    <button onclick="playSong(${index})">
+                        ▶️ Play
+                    </button>
+                `;
+
+                playlist.appendChild(item);
+
+            });
+
+        }
 
 
-// LIVE DATE & TIME
-function updateDateTime() {
+        /* =========================
+           ACTIVE SONG
+        ========================= */
 
-    const now = new Date();
+        function updatePlaylist() {
 
-    const date = now.toLocaleDateString("hi-IN", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric"
-    });
+            const items = document.querySelectorAll(".song-item");
 
-    const time = now.toLocaleTimeString("hi-IN", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true
-    });
+            items.forEach(function(item, index) {
 
-    document.getElementById("liveDate").textContent = "📅 " + date;
-    document.getElementById("liveTime").textContent = "🕐 " + time;
-}
+                if (index === currentSong) {
+                    item.classList.add("active");
+                } else {
+                    item.classList.remove("active");
+                }
 
-updateDateTime();
+            });
 
-setInterval(updateDateTime, 1000);
+        }
 
-</script>
+
+        /* =========================
+           DATE & TIME
+        ========================= */
+
+        function updateDateTime() {
+
+            const now = new Date();
+
+            const date = now.toLocaleDateString("hi-IN", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            });
+
+            const time = now.toLocaleTimeString("hi-IN", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+
+            document.getElementById("liveDate").textContent = date;
+
+            document.getElementById("liveTime").textContent = time;
+        }
+
+
+        /* =========================
+           START WEBSITE
+        ========================= */
+
+        createPlaylist();
+
+        updateDateTime();
+
+        setInterval(updateDateTime, 1000);
+
+
+        /* पहले Song को तैयार रखें */
+
+        audio.src = songs[0].src;
+
+        title.textContent = "🎵 " + songs[0].title;
+
+        updatePlaylist();
+
+    </script>
 
 </body>
+
 </html>
