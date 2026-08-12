@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>UTTAM PHOTOGRAPHY</title>
@@ -15,38 +16,46 @@
     box-sizing:border-box;
 }
 
+html,
 body{
-    min-height:100vh;
-    font-family:Arial, sans-serif;
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
     color:white;
-    overflow-x:hidden;
     background:#000;
+    overflow-x:hidden;
 }
 
 
-/* BACKGROUND */
+/* =========================
+   BACKGROUND
+========================= */
 
-.background{
+#background{
     position:fixed;
     inset:0;
     z-index:-10;
 
     background-image:
     linear-gradient(
-        rgba(0,0,0,.25),
+        rgba(0,0,0,.20),
         rgba(0,0,0,.65)
     ),
-    url("background1.jpg");
+    url("background (1).jpg");
 
     background-size:cover;
     background-position:center;
 
-    transition:
-    background-image 1s ease-in-out;
+    transition:background-image 1s ease-in-out;
 }
 
 
-/* TOP */
+/* =========================
+   TOP BAR
+========================= */
 
 .top{
     position:fixed;
@@ -54,79 +63,107 @@ body{
     left:0;
     right:0;
 
+    z-index:20;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:22px 30px;
-
-    z-index:20;
+    padding:22px 28px;
 }
 
 .time{
     font-size:22px;
     font-weight:bold;
-    text-shadow:0 3px 15px #000;
+
+    text-shadow:
+    0 3px 15px #000;
 }
 
 .date{
-    margin-top:4px;
+    margin-top:5px;
+
     font-size:9px;
+
     letter-spacing:2px;
-    opacity:.8;
+
+    opacity:.85;
 }
 
 .allSongs{
-    border:1px solid rgba(255,255,255,.35);
-
-    background:rgba(255,255,255,.10);
-
-    color:white;
-
     padding:10px 18px;
 
     border-radius:30px;
+
+    border:
+    1px solid
+    rgba(255,255,255,.35);
+
+    background:
+    rgba(255,255,255,.10);
+
+    color:white;
+
+    font-weight:bold;
 
     cursor:pointer;
 
     backdrop-filter:blur(15px);
 
-    font-weight:bold;
+    transition:.3s;
+}
+
+.allSongs:hover{
+    background:
+    rgba(255,255,255,.22);
+
+    transform:scale(1.05);
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .main{
     min-height:100vh;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
 
-    padding:80px 20px 150px;
+    padding:
+    80px 20px 170px;
 }
 
 .content{
     width:100%;
-    max-width:1000px;
+    max-width:1100px;
 }
 
 
-/* SMALL TITLE */
+/* =========================
+   UTTAM PHOTOGRAPHY
+========================= */
 
 .tag{
     display:inline-block;
 
-    padding:9px 20px;
-
-    border:1px solid rgba(255,255,255,.3);
+    padding:
+    9px 22px;
 
     border-radius:30px;
 
-    background:rgba(0,0,0,.25);
+    border:
+    1px solid
+    rgba(255,255,255,.35);
+
+    background:
+    rgba(0,0,0,.25);
 
     backdrop-filter:blur(15px);
 
@@ -136,33 +173,40 @@ body{
 }
 
 
-/* MAIN NAME */
-
 h1{
     margin-top:25px;
 
-    font-family:Georgia,serif;
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
     font-size:
-    clamp(48px,9vw,105px);
+    clamp(
+        48px,
+        9vw,
+        110px
+    );
 
-    line-height:.9;
+    line-height:.90;
 
-    letter-spacing:-3px;
+    letter-spacing:-4px;
 
     text-shadow:
-    0 8px 30px rgba(0,0,0,.9);
+    0 8px 30px
+    rgba(0,0,0,.95);
 }
+
 
 .gold{
     background:
     linear-gradient(
         90deg,
-        #fff,
-        #dcae45,
-        #fff,
-        #dcae45,
-        #fff
+        #ffffff,
+        #d6a83e,
+        #fff4c4,
+        #c89124,
+        #ffffff
     );
 
     background-size:300%;
@@ -172,10 +216,11 @@ h1{
 
     color:transparent;
 
-    animation:shine 5s linear infinite;
+    animation:
+    goldMove 5s linear infinite;
 }
 
-@keyframes shine{
+@keyframes goldMove{
 
     0%{
         background-position:0%;
@@ -184,8 +229,8 @@ h1{
     100%{
         background-position:300%;
     }
-
 }
+
 
 .subtitle{
     margin-top:20px;
@@ -198,26 +243,30 @@ h1{
 }
 
 
-/* GLASS PLAYER */
+/* =========================
+   GLASS MUSIC PLAYER
+========================= */
 
 .player{
-
     position:fixed;
 
+    left:50%;
     bottom:18px;
 
-    left:50%;
+    transform:
+    translateX(-50%);
 
-    transform:translateX(-50%);
+    z-index:50;
 
-    width:min(
-        820px,
-        calc(100% - 25px)
+    width:
+    min(
+        850px,
+        calc(100% - 24px)
     );
 
-    padding:15px 18px;
+    padding:16px 18px;
 
-    border-radius:25px;
+    border-radius:26px;
 
     background:
     rgba(255,255,255,.10);
@@ -233,15 +282,15 @@ h1{
     blur(25px);
 
     box-shadow:
-    0 15px 50px
-    rgba(0,0,0,.65);
+    0 18px 60px
+    rgba(0,0,0,.70),
 
-    z-index:50;
+    inset 0 1px 1px
+    rgba(255,255,255,.15);
 }
 
 
 .playerRow{
-
     display:flex;
 
     align-items:center;
@@ -250,20 +299,22 @@ h1{
 }
 
 
-/* PLAY */
+/* PLAY BUTTON */
 
-.play{
+.playButton{
     width:52px;
     height:52px;
+
+    flex-shrink:0;
 
     border-radius:50%;
 
     border:
     2px solid
-    rgba(255,255,255,.8);
+    rgba(255,255,255,.85);
 
     background:
-    rgba(0,0,0,.35);
+    rgba(0,0,0,.40);
 
     color:white;
 
@@ -271,28 +322,34 @@ h1{
 
     cursor:pointer;
 
-    flex-shrink:0;
+    transition:.25s;
 }
 
-.play:hover{
-    transform:scale(1.08);
+.playButton:hover{
+    transform:scale(1.10);
+
+    background:
+    rgba(255,255,255,.15);
 }
 
 
-/* SONG NAME */
+/* SONG INFORMATION */
 
-.info{
+.songInfo{
     flex:1;
+
     min-width:0;
 }
 
-.now{
+.nowPlaying{
     font-size:8px;
+
     letter-spacing:2px;
+
     opacity:.55;
 }
 
-.songName{
+.songTitle{
     margin-top:5px;
 
     font-size:15px;
@@ -307,31 +364,33 @@ h1{
 }
 
 
-/* PREVIOUS NEXT */
+/* PREVIOUS / NEXT */
 
 .control{
-    background:transparent;
-
     border:0;
+
+    background:transparent;
 
     color:white;
 
-    font-size:35px;
+    font-size:36px;
 
     cursor:pointer;
 
-    padding:5px 8px;
+    padding:
+    3px 8px;
+
+    transition:.2s;
 }
 
 .control:hover{
-    transform:scale(1.2);
+    transform:scale(1.25);
 }
 
 
 /* PROGRESS */
 
 .progress{
-
     width:100%;
 
     height:5px;
@@ -340,7 +399,7 @@ h1{
 
     appearance:none;
 
-    border-radius:10px;
+    border-radius:20px;
 
     background:
     rgba(255,255,255,.25);
@@ -349,7 +408,6 @@ h1{
 }
 
 .progress::-webkit-slider-thumb{
-
     appearance:none;
 
     width:13px;
@@ -359,29 +417,35 @@ h1{
 
     background:white;
 
+    box-shadow:
+    0 0 10px
+    rgba(255,255,255,.8);
 }
 
 
-/* SONG LIST */
+/* =========================
+   ALL SONGS WINDOW
+========================= */
 
 .songList{
-
-    display:none;
-
     position:fixed;
 
     inset:0;
 
     z-index:100;
 
+    display:none;
+
     overflow:auto;
 
-    padding:80px 20px 120px;
+    padding:
+    80px 20px 120px;
 
     background:
     rgba(0,0,0,.94);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:
+    blur(20px);
 }
 
 .songList.show{
@@ -389,38 +453,46 @@ h1{
 }
 
 .songContainer{
-    max-width:800px;
+    width:100%;
+
+    max-width:850px;
+
     margin:auto;
 }
 
-.close{
+.closeButton{
     float:right;
 
-    border:1px solid
+    border:
+    1px solid
     rgba(255,255,255,.4);
 
     background:transparent;
 
     color:white;
 
-    padding:8px 15px;
+    padding:
+    8px 16px;
 
-    border-radius:20px;
+    border-radius:25px;
 
     cursor:pointer;
 }
 
 .songContainer h2{
     margin-bottom:25px;
+
+    font-size:30px;
 }
 
 .songItem{
-
     display:flex;
 
     align-items:center;
 
     justify-content:space-between;
+
+    gap:10px;
 
     padding:14px;
 
@@ -436,24 +508,32 @@ h1{
     rgba(255,255,255,.10);
 }
 
-.songItem button{
-
-    border:0;
-
-    border-radius:20px;
-
-    padding:8px 15px;
-
-    cursor:pointer;
-}
-
 .songItem.active{
     background:
     rgba(255,255,255,.20);
+
+    border-left:
+    3px solid
+    #e2b447;
+}
+
+.songItem button{
+    border:0;
+
+    border-radius:25px;
+
+    padding:
+    8px 16px;
+
+    cursor:pointer;
+
+    font-weight:bold;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
@@ -465,28 +545,43 @@ h1{
         font-size:17px;
     }
 
+    .date{
+        font-size:7px;
+        letter-spacing:1px;
+    }
+
     .allSongs{
-        padding:8px 12px;
+        padding:
+        8px 12px;
+
         font-size:10px;
     }
 
     h1{
         font-size:52px;
+
+        letter-spacing:-2px;
     }
 
     .subtitle{
         font-size:8px;
+
         letter-spacing:3px;
     }
 
     .player{
         bottom:8px;
+
         padding:11px;
     }
 
-    .play{
+    .playButton{
         width:45px;
         height:45px;
+    }
+
+    .songTitle{
+        font-size:13px;
     }
 
 }
@@ -499,13 +594,16 @@ h1{
 <body>
 
 
-<div
-class="background"
-id="background">
-</div>
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<div id="background"></div>
 
 
-<!-- TOP -->
+<!-- =========================
+     TOP
+========================= -->
 
 <div class="top">
 
@@ -529,15 +627,16 @@ id="background">
     class="allSongs"
     onclick="openSongs()">
 
-    🎵 ALL SONGS
+        🎵 ALL SONGS
 
     </button>
 
 </div>
 
 
-
-<!-- MAIN -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <div class="main">
 
@@ -545,22 +644,23 @@ id="background">
 
         <div class="tag">
 
-        📸 UTTAM PHOTOGRAPHY
+            📸 UTTAM PHOTOGRAPHY
 
         </div>
 
 
         <h1 class="gold">
 
-        UTTAM<br>
-        PHOTOGRAPHY
+            UTTAM<br>
+
+            PHOTOGRAPHY
 
         </h1>
 
 
         <div class="subtitle">
 
-        MUSIC • PHOTOGRAPHY • MEMORIES
+            MUSIC • PHOTOGRAPHY • MEMORIES
 
         </div>
 
@@ -569,8 +669,9 @@ id="background">
 </div>
 
 
-
-<!-- PLAYER -->
+<!-- =========================
+     MUSIC PLAYER
+========================= -->
 
 <div class="player">
 
@@ -578,29 +679,29 @@ id="background">
 
 
         <button
-        class="play"
-        id="play"
+        class="playButton"
+        id="playButton"
         onclick="playPause()">
 
-        ▶
+            ▶
 
         </button>
 
 
-        <div class="info">
+        <div class="songInfo">
 
-            <div class="now">
+            <div class="nowPlaying">
 
-            NOW PLAYING
+                NOW PLAYING
 
             </div>
 
 
             <div
-            class="songName"
-            id="songName">
+            class="songTitle"
+            id="songTitle">
 
-            Song 1
+                Song 1
 
             </div>
 
@@ -611,7 +712,7 @@ id="background">
         class="control"
         onclick="previousSong()">
 
-        ‹
+            ‹
 
         </button>
 
@@ -620,7 +721,7 @@ id="background">
         class="control"
         onclick="nextSong()">
 
-        ›
+            ›
 
         </button>
 
@@ -637,14 +738,16 @@ id="background">
 
 
     <audio
-    id="audio">
+    id="audio"
+    preload="metadata">
     </audio>
 
 </div>
 
 
-
-<!-- SONG LIST -->
+<!-- =========================
+     SONG LIST
+========================= -->
 
 <div
 class="songList"
@@ -652,32 +755,38 @@ id="songList">
 
     <div class="songContainer">
 
+
         <button
-        class="close"
+        class="closeButton"
         onclick="closeSongs()">
 
-        ✕ CLOSE
+            ✕ CLOSE
 
         </button>
 
 
         <h2>
-        🎵 MY SONGS
+
+            🎵 MY SONGS
+
         </h2>
 
 
-        <div id="songItems"></div>
+        <div
+        id="songItems">
+        </div>
 
     </div>
 
 </div>
 
 
-
 <script>
 
 
-/* SONG FILES */
+/* =========================
+   YOUR SONG FILES
+========================= */
 
 const songs = [
 
@@ -702,91 +811,118 @@ const songs = [
 ];
 
 
-/* 5 BACKGROUNDS */
+/* =========================
+   YOUR EXACT BACKGROUND NAMES
+========================= */
 
 const backgrounds = [
 
-    "background1.jpg",
-    "background2.jpg",
-    "background3.jpg",
-    "background4.jpg",
-    "background5.jpg"
+    "background (1).jpg",
+
+    "background (2).jpg",
+
+    "background (3).jpg",
+
+    "background (4).jpg",
+
+    "background (5).jpg"
 
 ];
 
 
-let current = 0;
+let currentSong = 0;
 
+
+/* =========================
+   ELEMENTS
+========================= */
 
 const audio =
 document.getElementById("audio");
 
+const playButton =
+document.getElementById("playButton");
 
-const play =
-document.getElementById("play");
-
-
-const songName =
-document.getElementById("songName");
-
+const songTitle =
+document.getElementById("songTitle");
 
 const progress =
 document.getElementById("progress");
-
 
 const background =
 document.getElementById("background");
 
 
+/* =========================
+   CHANGE BACKGROUND
+========================= */
 
-/* LOAD SONG */
+function changeBackground(){
+
+    const bg =
+    backgrounds[
+        currentSong %
+        backgrounds.length
+    ];
+
+
+    background.style.backgroundImage =
+
+    `
+    linear-gradient(
+        rgba(0,0,0,.20),
+        rgba(0,0,0,.65)
+    ),
+    url("${bg}")
+    `;
+
+}
+
+
+/* =========================
+   LOAD SONG
+========================= */
 
 function loadSong(
     index,
-    autoPlay=false
+    autoPlay = false
 ){
 
-    current = index;
+    currentSong = index;
 
 
-    if(current < 0){
+    if(
+        currentSong < 0
+    ){
 
-        current =
+        currentSong =
         songs.length - 1;
 
     }
 
 
-    if(current >= songs.length){
+    if(
+        currentSong >= songs.length
+    ){
 
-        current = 0;
+        currentSong = 0;
 
     }
 
 
     audio.src =
-    songs[current];
+    songs[currentSong];
 
 
-    songName.innerText =
+    songTitle.innerText =
     "🎵 Song " +
-    (current + 1);
-
-
-    /* CHANGE BACKGROUND */
-
-    background.style.backgroundImage =
-
-    `linear-gradient(
-        rgba(0,0,0,.25),
-        rgba(0,0,0,.65)
-    ),
-    url("${backgrounds[
-        current % backgrounds.length
-    ]}")`;
+    (currentSong + 1);
 
 
     progress.value = 0;
+
+
+    changeBackground();
 
 
     updateSongList();
@@ -795,22 +931,33 @@ function loadSong(
     if(autoPlay){
 
         audio.play()
-        .catch(()=>{});
+        .catch(function(){
+
+        });
 
     }
 
 }
 
 
-
-/* PLAY PAUSE */
+/* =========================
+   PLAY / PAUSE
+========================= */
 
 function playPause(){
 
-    if(audio.paused){
+    if(
+        audio.paused
+    ){
 
         audio.play()
-        .catch(()=>{});
+        .catch(function(){
+
+            alert(
+                "Song file नहीं मिल रही है। GitHub में MP3 का नाम check करें।"
+            );
+
+        });
 
     }
     else{
@@ -822,29 +969,37 @@ function playPause(){
 }
 
 
-/* PLAY */
+/* =========================
+   PLAY EVENT
+========================= */
 
 audio.addEventListener(
 "play",
 function(){
 
-    play.innerText="❚❚";
+    playButton.innerText =
+    "❚❚";
 
 });
 
 
-/* PAUSE */
+/* =========================
+   PAUSE EVENT
+========================= */
 
 audio.addEventListener(
 "pause",
 function(){
 
-    play.innerText="▶";
+    playButton.innerText =
+    "▶";
 
 });
 
 
-/* AUTO NEXT */
+/* =========================
+   SONG END = NEXT SONG
+========================= */
 
 audio.addEventListener(
 "ended",
@@ -855,56 +1010,73 @@ function(){
 });
 
 
-/* NEXT */
+/* =========================
+   NEXT
+========================= */
 
 function nextSong(){
 
-    current++;
+    currentSong++;
 
-    if(current >= songs.length){
 
-        current = 0;
+    if(
+        currentSong >= songs.length
+    ){
+
+        currentSong = 0;
 
     }
 
+
     loadSong(
-        current,
+        currentSong,
         true
     );
 
 }
 
 
-/* PREVIOUS */
+/* =========================
+   PREVIOUS
+========================= */
 
 function previousSong(){
 
-    current--;
+    currentSong--;
 
-    if(current < 0){
 
-        current =
+    if(
+        currentSong < 0
+    ){
+
+        currentSong =
         songs.length - 1;
 
     }
 
+
     loadSong(
-        current,
+        currentSong,
         true
     );
 
 }
 
 
-/* PROGRESS */
+/* =========================
+   PROGRESS
+========================= */
 
 audio.addEventListener(
 "timeupdate",
 function(){
 
-    if(audio.duration){
+    if(
+        audio.duration
+    ){
 
         progress.value =
+
         (
             audio.currentTime /
             audio.duration
@@ -919,11 +1091,15 @@ progress.addEventListener(
 "input",
 function(){
 
-    if(audio.duration){
+    if(
+        audio.duration
+    ){
 
         audio.currentTime =
+
         (
-            progress.value / 100
+            progress.value /
+            100
         ) *
         audio.duration;
 
@@ -932,8 +1108,9 @@ function(){
 });
 
 
-
-/* SONG LIST */
+/* =========================
+   SONG LIST
+========================= */
 
 function createSongList(){
 
@@ -943,11 +1120,11 @@ function createSongList(){
     );
 
 
-    box.innerHTML="";
+    box.innerHTML = "";
 
 
     songs.forEach(
-    function(file,index){
+    function(song,index){
 
         const item =
         document.createElement(
@@ -961,16 +1138,20 @@ function createSongList(){
 
         item.innerHTML = `
 
-        <span>
-        🎵 Song ${index + 1}
-        </span>
+            <span>
 
-        <button
-        onclick="selectSong(${index})">
+                🎵 Song ${index + 1}
 
-        ▶ PLAY
+            </span>
 
-        </button>
+            <button
+            onclick="
+            selectSong(${index})
+            ">
+
+                ▶ PLAY
+
+            </button>
 
         `;
 
@@ -982,6 +1163,10 @@ function createSongList(){
 }
 
 
+/* =========================
+   SELECT SONG
+========================= */
+
 function selectSong(index){
 
     loadSong(
@@ -989,8 +1174,15 @@ function selectSong(index){
         true
     );
 
+
+    closeSongs();
+
 }
 
+
+/* =========================
+   UPDATE SONG LIST
+========================= */
 
 function updateSongList(){
 
@@ -1003,15 +1195,31 @@ function updateSongList(){
     items.forEach(
     function(item,index){
 
-        item.classList.toggle(
-            "active",
-            index === current
-        );
+        if(
+            index === currentSong
+        ){
+
+            item.classList.add(
+                "active"
+            );
+
+        }
+        else{
+
+            item.classList.remove(
+                "active"
+            );
+
+        }
 
     });
 
 }
 
+
+/* =========================
+   OPEN SONGS
+========================= */
 
 function openSongs(){
 
@@ -1019,10 +1227,19 @@ function openSongs(){
     .getElementById(
         "songList"
     )
-    .classList.add("show");
+    .classList.add(
+        "show"
+    );
+
+
+    updateSongList();
 
 }
 
+
+/* =========================
+   CLOSE SONGS
+========================= */
 
 function closeSongs(){
 
@@ -1030,13 +1247,16 @@ function closeSongs(){
     .getElementById(
         "songList"
     )
-    .classList.remove("show");
+    .classList.remove(
+        "show"
+    );
 
 }
 
 
-
-/* CLOCK */
+/* =========================
+   CLOCK
+========================= */
 
 function updateClock(){
 
@@ -1047,6 +1267,7 @@ function updateClock(){
     document
     .getElementById("time")
     .innerText =
+
     now.toLocaleTimeString(
         "en-IN",
         {
@@ -1061,6 +1282,7 @@ function updateClock(){
     document
     .getElementById("date")
     .innerText =
+
     now.toLocaleDateString(
         "en-IN",
         {
@@ -1074,9 +1296,13 @@ function updateClock(){
 }
 
 
+/* =========================
+   START WEBSITE
+========================= */
+
 createSongList();
 
-loadSong(0);
+loadSong(0,false);
 
 updateClock();
 
@@ -1084,7 +1310,6 @@ setInterval(
     updateClock,
     1000
 );
-
 
 </script>
 
