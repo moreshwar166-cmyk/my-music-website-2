@@ -1,55 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>UTTAM PHOTOGRAPHY</title>
 
+
 <style>
 
+/* =========================
+   BASIC
+========================= */
+
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
+
 body{
+
     min-height:100vh;
-    font-family:Arial,Helvetica,sans-serif;
+
     color:white;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
     overflow-x:hidden;
 
-    background:
-    linear-gradient(
-        rgba(0,0,0,.38),
-        rgba(0,0,0,.78)
-    ),
-    url("background.png");
+    background:#080808;
 
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
 }
 
 
 /* =========================
-   BACKGROUND EFFECT
+   BACKGROUND
 ========================= */
 
-body::before{
-    content:"";
+.background{
+
     position:fixed;
+
+    inset:0;
+
+    z-index:-5;
+
+    background-image:
+    linear-gradient(
+        rgba(0,0,0,.35),
+        rgba(0,0,0,.72)
+    ),
+    url("background1.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    transition:
+    background-image 1.2s ease-in-out,
+    opacity .6s ease;
+
+}
+
+
+/* DARK OVERLAY */
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
     inset:0;
 
     background:
     radial-gradient(
         circle at center,
-        rgba(255,190,80,.12),
-        transparent 45%
+        transparent 20%,
+        rgba(0,0,0,.65) 100%
     );
 
-    pointer-events:none;
 }
 
 
@@ -58,65 +96,87 @@ body::before{
 ========================= */
 
 .topbar{
+
     position:fixed;
+
     top:0;
+
     left:0;
+
     right:0;
 
     z-index:20;
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
-    padding:22px 30px;
+    padding:20px 28px;
+
 }
 
 
-.time{
-    font-size:24px;
+.clock{
+
+    font-size:22px;
+
     font-weight:bold;
 
     text-shadow:
-    0 2px 12px black;
+    0 3px 15px black;
+
 }
 
 
 .date{
+
     margin-top:5px;
 
-    font-size:11px;
+    font-size:10px;
+
     letter-spacing:2px;
 
     opacity:.75;
+
 }
 
 
-.all-songs{
-    border:1px solid rgba(255,255,255,.3);
+.allSongs{
 
-    background:rgba(0,0,0,.45);
-
-    color:white;
-
-    padding:11px 20px;
+    padding:10px 18px;
 
     border-radius:30px;
 
+    border:
+    1px solid
+    rgba(255,255,255,.3);
+
+    background:
+    rgba(255,255,255,.10);
+
+    color:white;
+
     cursor:pointer;
+
+    backdrop-filter:
+    blur(15px);
 
     font-weight:bold;
 
-    backdrop-filter:blur(10px);
-
     transition:.3s;
+
 }
 
 
-.all-songs:hover{
-    background:rgba(255,255,255,.18);
+.allSongs:hover{
+
+    background:
+    rgba(255,255,255,.22);
 
     transform:scale(1.05);
+
 }
 
 
@@ -125,6 +185,7 @@ body::before{
 ========================= */
 
 .main{
+
     min-height:100vh;
 
     display:flex;
@@ -136,126 +197,137 @@ body::before{
     text-align:center;
 
     padding:
-    100px 20px 180px;
+    90px 20px 180px;
+
 }
 
 
 .content{
+
     width:100%;
 
     max-width:900px;
+
 }
 
 
-/* LOGO */
+/* =========================
+   LOGO
+========================= */
 
 .logo{
-    width:90px;
-    height:90px;
 
-    margin:auto;
+    width:
+    clamp(150px,20vw,220px);
 
-    display:flex;
+    height:
+    clamp(150px,20vw,220px);
 
-    justify-content:center;
-    align-items:center;
+    object-fit:contain;
 
     border-radius:50%;
 
-    background:
-    linear-gradient(
-        145deg,
-        #222,
-        #050505
+    filter:
+    drop-shadow(
+        0 0 25px
+        rgba(255,190,60,.45)
     );
 
-    border:3px solid #e7b94e;
+    animation:
+    logoFloat 4s ease-in-out infinite;
 
-    box-shadow:
-    0 0 0 6px rgba(0,0,0,.35),
-    0 0 35px rgba(255,190,70,.25);
-
-    font-size:35px;
-
-    animation:logoFloat 3s ease-in-out infinite;
 }
 
 
 @keyframes logoFloat{
 
     0%,100%{
-        transform:translateY(0);
+
+        transform:
+        translateY(0)
+        scale(1);
+
     }
 
     50%{
-        transform:translateY(-8px);
+
+        transform:
+        translateY(-8px)
+        scale(1.03);
+
     }
 
 }
 
 
-/* TAG */
+/* =========================
+   TITLE
+========================= */
 
 .tag{
+
     display:inline-block;
 
-    margin-top:25px;
+    margin-top:22px;
 
-    padding:9px 20px;
+    padding:
+    8px 18px;
 
     border-radius:30px;
+
+    background:
+    rgba(0,0,0,.35);
 
     border:
     1px solid
     rgba(255,255,255,.25);
 
-    background:
-    rgba(0,0,0,.35);
+    backdrop-filter:
+    blur(12px);
 
-    font-size:11px;
+    font-size:10px;
 
-    letter-spacing:2px;
+    letter-spacing:3px;
 
-    backdrop-filter:blur(8px);
 }
 
 
-/* TITLE */
-
 h1{
 
-    margin-top:25px;
+    margin-top:20px;
 
     font-family:
     Georgia,
-    "Times New Roman",
     serif;
 
     font-size:
-    clamp(48px,9vw,105px);
+    clamp(
+        48px,
+        9vw,
+        100px
+    );
 
     line-height:.9;
 
     letter-spacing:-3px;
 
     text-shadow:
-    0 6px 25px black;
+    0 8px 30px black;
 
 }
 
 
-/* GOLD TITLE EFFECT */
-
-.title-gold{
+.gold{
 
     background:
+
     linear-gradient(
         90deg,
-        #fff,
-        #f0c45b,
-        #fff,
-        #d9a62e,
-        #fff
+        #ffffff,
+        #f5c75b,
+        #ffffff,
+        #d89f25,
+        #ffffff
     );
 
     background-size:300%;
@@ -267,11 +339,12 @@ h1{
     color:transparent;
 
     animation:
-    titleShine 5s linear infinite;
+    shine 5s linear infinite;
+
 }
 
 
-@keyframes titleShine{
+@keyframes shine{
 
     0%{
         background-position:0%;
@@ -288,16 +361,17 @@ h1{
 
     margin-top:18px;
 
-    font-size:13px;
+    font-size:11px;
 
     letter-spacing:5px;
 
     opacity:.8;
+
 }
 
 
 /* =========================
-   DYNAMIC PLAYER
+   GLASS PLAYER
 ========================= */
 
 .player{
@@ -306,7 +380,7 @@ h1{
 
     left:50%;
 
-    bottom:20px;
+    bottom:18px;
 
     transform:
     translateX(-50%);
@@ -315,129 +389,153 @@ h1{
 
     width:
     min(
-        780px,
-        calc(100% - 25px)
+        820px,
+        calc(100% - 24px)
     );
 
-    padding:15px 17px;
+    padding:
+    15px 18px;
 
-    border-radius:28px;
+    border-radius:25px;
 
     background:
-    rgba(15,12,10,.88);
+    rgba(
+        255,
+        255,
+        255,
+        .09
+    );
 
     border:
     1px solid
-    rgba(255,255,255,.18);
-
-    box-shadow:
-    0 15px 50px
-    rgba(0,0,0,.7);
+    rgba(
+        255,
+        255,
+        255,
+        .25
+    );
 
     backdrop-filter:
-    blur(18px);
+    blur(25px);
 
-    transition:.3s;
+    -webkit-backdrop-filter:
+    blur(25px);
+
+    box-shadow:
+
+    0 15px 50px
+    rgba(0,0,0,.65),
+
+    inset 0 1px 1px
+    rgba(255,255,255,.15);
+
+    transition:
+    .4s;
+
 }
 
-
-/* PLAYING EFFECT */
 
 .player.playing{
 
     box-shadow:
 
-    0 15px 50px
+    0 15px 60px
     rgba(0,0,0,.7),
 
-    0 0 30px
-    rgba(255,190,70,.20);
+    0 0 40px
+    rgba(255,190,70,.20),
 
-    animation:
-    playerGlow 2s ease-in-out infinite alternate;
-}
-
-
-@keyframes playerGlow{
-
-    from{
-        transform:
-        translateX(-50%)
-        scale(1);
-    }
-
-    to{
-        transform:
-        translateX(-50%)
-        scale(1.012);
-    }
+    inset 0 1px 1px
+    rgba(255,255,255,.2);
 
 }
 
 
-.player-row{
+/* PLAYER ROW */
+
+.playerRow{
 
     display:flex;
 
     align-items:center;
 
     gap:12px;
+
 }
 
 
 /* PLAY BUTTON */
 
-.play{
+.playButton{
 
-    width:50px;
-    height:50px;
+    width:52px;
+
+    height:52px;
 
     flex-shrink:0;
 
-    border:0;
-
     border-radius:50%;
 
-    background:white;
+    border:
+    2px solid
+    rgba(255,255,255,.8);
 
-    color:#111;
+    background:
+    rgba(0,0,0,.45);
+
+    color:white;
 
     cursor:pointer;
 
-    font-size:18px;
+    font-size:20px;
 
-    font-weight:bold;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     transition:.3s;
-}
-
-
-.play:hover{
-
-    transform:scale(1.1);
 
 }
 
 
-.player.playing .play{
+.playButton:hover{
+
+    transform:
+    scale(1.1);
+
+    background:
+    rgba(255,255,255,.18);
+
+}
+
+
+.player.playing
+.playButton{
 
     animation:
-    playPulse 1.2s infinite;
+    pulse 1.3s infinite;
+
 }
 
 
-@keyframes playPulse{
+@keyframes pulse{
 
     0%,100%{
+
         box-shadow:
         0 0 0 0
-        rgba(255,255,255,.3);
+        rgba(255,210,100,.4);
+
     }
 
     50%{
+
         box-shadow:
-        0 0 0 12px
-        rgba(255,255,255,0);
+        0 0 0 13px
+        rgba(255,210,100,0);
+
     }
 
 }
@@ -445,25 +543,27 @@ h1{
 
 /* SONG INFO */
 
-.song-info{
+.songInfo{
 
     flex:1;
 
     min-width:0;
+
 }
 
 
-.now-playing{
+.now{
 
-    font-size:9px;
+    font-size:8px;
 
     letter-spacing:2px;
 
     opacity:.55;
+
 }
 
 
-.song-title{
+.songTitle{
 
     margin-top:4px;
 
@@ -476,26 +576,31 @@ h1{
     overflow:hidden;
 
     text-overflow:ellipsis;
+
 }
 
 
-.player.playing .song-title{
+.player.playing
+.songTitle{
 
     animation:
-    songGlow 1.5s
-    ease-in-out
-    infinite alternate;
+    titlePulse 1.5s infinite alternate;
+
 }
 
 
-@keyframes songGlow{
+@keyframes titlePulse{
 
     from{
+
         opacity:.65;
+
     }
 
     to{
+
         opacity:1;
+
     }
 
 }
@@ -505,9 +610,10 @@ h1{
 
 .control{
 
-    border:0;
+    background:
+    transparent;
 
-    background:transparent;
+    border:0;
 
     color:white;
 
@@ -515,15 +621,18 @@ h1{
 
     cursor:pointer;
 
-    padding:5px 8px;
+    padding:
+    5px 8px;
 
     transition:.2s;
+
 }
 
 
 .control:hover{
 
-    transform:scale(1.2);
+    transform:
+    scale(1.25);
 
 }
 
@@ -543,9 +652,10 @@ h1{
     border-radius:10px;
 
     background:
-    rgba(255,255,255,.16);
+    rgba(255,255,255,.18);
 
     cursor:pointer;
+
 }
 
 
@@ -553,12 +663,17 @@ h1{
 
     appearance:none;
 
-    width:12px;
-    height:12px;
+    width:13px;
+
+    height:13px;
 
     border-radius:50%;
 
     background:white;
+
+    box-shadow:
+    0 0 10px
+    rgba(255,255,255,.8);
 
 }
 
@@ -567,7 +682,7 @@ h1{
    SONG LIST
 ========================= */
 
-.song-list{
+.songList{
 
     display:none;
 
@@ -580,34 +695,39 @@ h1{
     overflow:auto;
 
     padding:
-    80px 20px 140px;
+    80px 20px 130px;
 
     background:
-    rgba(8,7,6,.97);
+    rgba(5,5,5,.95);
+
+    backdrop-filter:
+    blur(20px);
+
 }
 
 
-.song-list.show{
+.songList.show{
 
     display:block;
 
 }
 
 
-.song-box{
+.songBox{
 
-    width:
-    min(850px,100%);
+    max-width:850px;
 
     margin:auto;
+
 }
 
 
-.song-box h2{
-
-    font-size:32px;
+.songBox h2{
 
     margin-bottom:20px;
+
+    font-size:30px;
+
 }
 
 
@@ -615,19 +735,22 @@ h1{
 
     float:right;
 
+    padding:
+    8px 15px;
+
+    border-radius:20px;
+
     border:
     1px solid
     rgba(255,255,255,.4);
 
-    background:transparent;
+    background:
+    transparent;
 
     color:white;
 
-    padding:8px 16px;
-
-    border-radius:20px;
-
     cursor:pointer;
+
 }
 
 
@@ -641,27 +764,18 @@ h1{
 
     gap:10px;
 
-    padding:14px 16px;
+    padding:14px;
 
     margin:8px 0;
 
-    border-radius:15px;
+    border-radius:14px;
 
     background:
-    rgba(255,255,255,.07);
+    rgba(255,255,255,.08);
 
     border:
     1px solid
-    rgba(255,255,255,.07);
-
-    transition:.2s;
-}
-
-
-.song:hover{
-
-    background:
-    rgba(255,255,255,.13);
+    rgba(255,255,255,.08);
 
 }
 
@@ -669,21 +783,12 @@ h1{
 .song.active{
 
     background:
-    rgba(255,255,255,.20);
+    rgba(255,255,255,.18);
 
     box-shadow:
     inset 3px 0
     #e7b94e;
-}
 
-
-.song-name{
-
-    overflow:hidden;
-
-    white-space:nowrap;
-
-    text-overflow:ellipsis;
 }
 
 
@@ -691,13 +796,15 @@ h1{
 
     border:0;
 
-    padding:9px 16px;
-
     border-radius:20px;
+
+    padding:
+    8px 15px;
 
     cursor:pointer;
 
     font-weight:bold;
+
 }
 
 
@@ -710,94 +817,88 @@ h1{
     .topbar{
 
         padding:
-        14px;
+        13px;
 
     }
 
-    .time{
 
-        font-size:18px;
+    .clock{
+
+        font-size:17px;
 
     }
+
 
     .date{
 
-        font-size:8px;
+        font-size:7px;
 
         letter-spacing:1px;
 
     }
 
-    .all-songs{
+
+    .allSongs{
 
         padding:
         8px 12px;
 
-        font-size:11px;
+        font-size:10px;
 
     }
+
 
     .logo{
 
-        width:72px;
+        width:150px;
 
-        height:72px;
-
-        font-size:28px;
+        height:150px;
 
     }
+
 
     h1{
 
-        font-size:
-        55px;
-
-        letter-spacing:-2px;
+        font-size:52px;
 
     }
 
+
     .subtitle{
 
-        font-size:9px;
+        font-size:8px;
 
         letter-spacing:3px;
 
     }
 
+
     .player{
 
         bottom:8px;
 
+        padding:
+        11px;
+
         border-radius:20px;
 
-        padding:11px;
+    }
+
+
+    .playButton{
+
+        width:44px;
+
+        height:44px;
 
     }
 
-    .play{
 
-        width:43px;
-
-        height:43px;
-
-    }
-
-    .song-title{
+    .songTitle{
 
         font-size:13px;
 
     }
-
-}
-
-
-/* =========================
-   HIDE AUDIO
-========================= */
-
-audio{
-
-    display:none;
 
 }
 
@@ -809,21 +910,30 @@ audio{
 <body>
 
 
-<!-- =========================
-     TOP BAR
-========================= -->
+<!-- BACKGROUND -->
+
+<div
+class="background"
+id="background">
+</div>
+
+
+
+<!-- TOP -->
 
 <div class="topbar">
+
 
     <div>
 
         <div
-        class="time"
-        id="time">
+        class="clock"
+        id="clock">
 
         00:00:00
 
         </div>
+
 
         <div
         class="date"
@@ -835,41 +945,42 @@ audio{
 
 
     <button
-    class="all-songs"
+    class="allSongs"
     onclick="openSongs()">
 
         🎵 ALL SONGS
 
     </button>
 
+
 </div>
 
 
 
-<!-- =========================
-     MAIN
-========================= -->
+<!-- MAIN -->
 
 <main class="main">
+
 
     <div class="content">
 
 
-        <div class="logo">
+        <!-- YOUR LOGO -->
 
-            ▶
-
-        </div>
+        <img
+        src="logo.png"
+        class="logo"
+        alt="UTTAM PHOTOGRAPHY">
 
 
         <div class="tag">
 
-            🎵 NOW PLAYING • UTTAM MUSIC
+            📸 UTTAM PHOTOGRAPHY
 
         </div>
 
 
-        <h1 class="title-gold">
+        <h1 class="gold">
 
             UTTAM<br>
 
@@ -880,7 +991,7 @@ audio{
 
         <div class="subtitle">
 
-            YOUR PERSONAL MUSIC STATION
+            MUSIC • PHOTOGRAPHY • MEMORIES
 
         </div>
 
@@ -891,20 +1002,18 @@ audio{
 
 
 
-<!-- =========================
-     MUSIC PLAYER
-========================= -->
+<!-- GLASS PLAYER -->
 
 <div
 class="player"
 id="player">
 
 
-    <div class="player-row">
+    <div class="playerRow">
 
 
         <button
-        class="play"
+        class="playButton"
         id="playButton"
         onclick="playPause()">
 
@@ -913,10 +1022,10 @@ id="player">
         </button>
 
 
-        <div class="song-info">
+        <div class="songInfo">
 
 
-            <div class="now-playing">
+            <div class="now">
 
                 NOW PLAYING
 
@@ -924,7 +1033,7 @@ id="player">
 
 
             <div
-            class="song-title"
+            class="songTitle"
             id="songTitle">
 
                 Song 1
@@ -958,8 +1067,8 @@ id="player">
 
     <input
     type="range"
-    class="progress"
     id="progress"
+    class="progress"
     min="0"
     max="100"
     value="0">
@@ -975,16 +1084,14 @@ id="player">
 
 
 
-<!-- =========================
-     SONG LIST
-========================= -->
+<!-- SONG LIST -->
 
 <div
-class="song-list"
+class="songList"
 id="songList">
 
 
-    <div class="song-box">
+    <div class="songBox">
 
 
         <button
@@ -1018,16 +1125,16 @@ id="songList">
 
 
 /* =========================
-   SONG DATABASE
+   SONGS
 ========================= */
 
 
-const songs = [];
+const songs=[];
 
 
 for(
-    let i = 1;
-    i <= 35;
+    let i=1;
+    i<=35;
     i++
 ){
 
@@ -1046,41 +1153,107 @@ for(
 
 
 /* =========================
-   PLAYER VARIABLES
+   BACKGROUNDS
 ========================= */
 
 
-let currentSong = 0;
+const backgrounds=[
+
+    "background1.png",
+
+    "background2.png",
+
+    "background3.png",
+
+    "background4.png",
+
+    "background5.png"
+
+];
 
 
-const audio =
+let currentSong=0;
+
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+
+const audio=
 document.getElementById(
     "audio"
 );
 
 
-const player =
+const player=
 document.getElementById(
     "player"
 );
 
 
-const playButton =
+const playButton=
 document.getElementById(
     "playButton"
 );
 
 
-const songTitle =
+const songTitle=
 document.getElementById(
     "songTitle"
 );
 
 
-const progress =
+const progress=
 document.getElementById(
     "progress"
 );
+
+
+const background=
+document.getElementById(
+    "background"
+);
+
+
+
+/* =========================
+   CHANGE BACKGROUND
+========================= */
+
+
+function changeBackground(){
+
+    const bgIndex=
+    currentSong %
+    backgrounds.length;
+
+
+    background.style.opacity="0";
+
+
+    setTimeout(
+        function(){
+
+            background.style.backgroundImage=
+
+            `
+            linear-gradient(
+                rgba(0,0,0,.35),
+                rgba(0,0,0,.72)
+            ),
+            url("${backgrounds[bgIndex]}")
+            `;
+
+
+            background.style.opacity="1";
+
+        },
+        350
+    );
+
+}
 
 
 
@@ -1091,41 +1264,44 @@ document.getElementById(
 
 function loadSong(
     index,
-    autoPlay = false
+    autoPlay=false
 ){
 
-    currentSong = index;
+    currentSong=index;
 
 
     if(
-        currentSong < 0
+        currentSong<0
     ){
 
-        currentSong =
-        songs.length - 1;
+        currentSong=
+        songs.length-1;
 
     }
 
 
     if(
-        currentSong >= songs.length
+        currentSong>=songs.length
     ){
 
-        currentSong = 0;
+        currentSong=0;
 
     }
 
 
-    audio.src =
+    audio.src=
     songs[currentSong].file;
 
 
-    songTitle.innerText =
-    "🎵 " +
+    songTitle.innerText=
+    "🎵 "+
     songs[currentSong].name;
 
 
-    progress.value = 0;
+    progress.value=0;
+
+
+    changeBackground();
 
 
     updateSongList();
@@ -1135,7 +1311,7 @@ function loadSong(
 
         audio.play()
         .catch(
-            () => {}
+            ()=>{}
         );
 
     }
@@ -1145,7 +1321,7 @@ function loadSong(
 
 
 /* =========================
-   PLAY / PAUSE
+   PLAY PAUSE
 ========================= */
 
 
@@ -1157,7 +1333,7 @@ function playPause(){
 
         audio.play()
         .catch(
-            () => {}
+            ()=>{}
         );
 
     }
@@ -1173,7 +1349,7 @@ function playPause(){
 
 
 /* =========================
-   PLAY EVENT
+   PLAY
 ========================= */
 
 
@@ -1181,8 +1357,7 @@ audio.addEventListener(
     "play",
     function(){
 
-        playButton.innerText =
-        "❚❚";
+        playButton.innerText="❚❚";
 
         player.classList.add(
             "playing"
@@ -1194,7 +1369,7 @@ audio.addEventListener(
 
 
 /* =========================
-   PAUSE EVENT
+   PAUSE
 ========================= */
 
 
@@ -1202,8 +1377,7 @@ audio.addEventListener(
     "pause",
     function(){
 
-        playButton.innerText =
-        "▶";
+        playButton.innerText="▶";
 
         player.classList.remove(
             "playing"
@@ -1215,7 +1389,7 @@ audio.addEventListener(
 
 
 /* =========================
-   AUTOMATIC NEXT SONG
+   AUTO NEXT
 ========================= */
 
 
@@ -1231,7 +1405,7 @@ audio.addEventListener(
 
 
 /* =========================
-   NEXT SONG
+   NEXT
 ========================= */
 
 
@@ -1239,13 +1413,15 @@ function nextSong(){
 
     currentSong++;
 
+
     if(
-        currentSong >= songs.length
+        currentSong>=songs.length
     ){
 
-        currentSong = 0;
+        currentSong=0;
 
     }
+
 
     loadSong(
         currentSong,
@@ -1257,7 +1433,7 @@ function nextSong(){
 
 
 /* =========================
-   PREVIOUS SONG
+   PREVIOUS
 ========================= */
 
 
@@ -1265,14 +1441,16 @@ function previousSong(){
 
     currentSong--;
 
+
     if(
-        currentSong < 0
+        currentSong<0
     ){
 
-        currentSong =
-        songs.length - 1;
+        currentSong=
+        songs.length-1;
 
     }
+
 
     loadSong(
         currentSong,
@@ -1284,7 +1462,7 @@ function previousSong(){
 
 
 /* =========================
-   PROGRESS BAR
+   PROGRESS
 ========================= */
 
 
@@ -1296,11 +1474,11 @@ audio.addEventListener(
             audio.duration
         ){
 
-            progress.value =
+            progress.value=
             (
-                audio.currentTime /
+                audio.currentTime/
                 audio.duration
-            ) * 100;
+            )*100;
 
         }
 
@@ -1317,11 +1495,11 @@ progress.addEventListener(
             audio.duration
         ){
 
-            audio.currentTime =
+            audio.currentTime=
             (
-                progress.value /
+                progress.value/
                 100
-            ) *
+            )*
             audio.duration;
 
         }
@@ -1332,37 +1510,36 @@ progress.addEventListener(
 
 
 /* =========================
-   CREATE SONG LIST
+   SONG LIST
 ========================= */
 
 
 function createSongList(){
 
-    const list =
+    const box=
     document.getElementById(
         "songs"
     );
 
 
-    list.innerHTML = "";
+    box.innerHTML="";
 
 
     songs.forEach(
         function(song,index){
 
-            const item =
+            const item=
             document.createElement(
                 "div"
             );
 
 
-            item.className =
-            "song";
+            item.className="song";
 
 
-            item.innerHTML = `
+            item.innerHTML=`
 
-                <span class="song-name">
+                <span>
 
                     🎵 ${song.name}
 
@@ -1382,7 +1559,7 @@ function createSongList(){
             `;
 
 
-            list.appendChild(
+            box.appendChild(
                 item
             );
 
@@ -1418,7 +1595,7 @@ function playSelectedSong(
 
 function updateSongList(){
 
-    const items =
+    const items=
     document.querySelectorAll(
         ".song"
     );
@@ -1428,7 +1605,7 @@ function updateSongList(){
         function(item,index){
 
             if(
-                index === currentSong
+                index===currentSong
             ){
 
                 item.classList.add(
@@ -1453,7 +1630,7 @@ function updateSongList(){
 
 
 /* =========================
-   OPEN SONG LIST
+   OPEN LIST
 ========================= */
 
 
@@ -1475,7 +1652,7 @@ function openSongs(){
 
 
 /* =========================
-   CLOSE SONG LIST
+   CLOSE LIST
 ========================= */
 
 
@@ -1494,28 +1671,33 @@ function closeSongs(){
 
 
 /* =========================
-   LIVE TIME
+   CLOCK
 ========================= */
 
 
-function updateTime(){
+function updateClock(){
 
-    const now =
+    const now=
     new Date();
 
 
     document
     .getElementById(
-        "time"
+        "clock"
     )
-    .innerText =
+    .innerText=
     now.toLocaleTimeString(
         "en-IN",
         {
+
             hour:"2-digit",
+
             minute:"2-digit",
+
             second:"2-digit",
+
             hour12:true
+
         }
     );
 
@@ -1524,14 +1706,19 @@ function updateTime(){
     .getElementById(
         "date"
     )
-    .innerText =
+    .innerText=
     now.toLocaleDateString(
         "en-IN",
         {
+
             weekday:"long",
+
             day:"2-digit",
+
             month:"long",
+
             year:"numeric"
+
         }
     ).toUpperCase();
 
@@ -1540,7 +1727,7 @@ function updateTime(){
 
 
 /* =========================
-   START WEBSITE
+   START
 ========================= */
 
 
@@ -1553,11 +1740,11 @@ loadSong(
 );
 
 
-updateTime();
+updateClock();
 
 
 setInterval(
-    updateTime,
+    updateClock,
     1000
 );
 
@@ -1566,4 +1753,5 @@ setInterval(
 
 
 </body>
+
 </html>
