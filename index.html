@@ -1,378 +1,654 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Music</title>
+<title>MY MUSIC</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+*{
+    box-sizing:border-box;
+}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            color: white;
-            background:
-                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.80)),
-                url("background.jpg") center/cover fixed;
-        }
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.78)),
+    url("background.png") center/cover fixed;
+}
 
-        .header {
-            text-align: center;
-            padding: 25px 15px 10px;
-        }
+/* TOP */
+.top{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:10;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 30px;
+}
 
-        .header h1 {
-            margin: 0;
-            font-size: 32px;
-            text-shadow: 0 3px 10px black;
-        }
+.time{
+    font-size:24px;
+    font-weight:bold;
+    text-shadow:0 2px 10px #000;
+}
 
-        .date-time {
-            text-align: center;
-            margin: 10px auto 20px;
-        }
+.date{
+    font-size:12px;
+    opacity:.8;
+    margin-top:5px;
+}
 
-        #liveDate {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
+.top button{
+    background:rgba(0,0,0,.55);
+    color:white;
+    border:1px solid rgba(255,255,255,.3);
+    padding:10px 18px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-        #liveTime {
-            font-size: 28px;
-            font-weight: bold;
-        }
+/* MAIN */
+.main{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 20px 180px;
+}
 
-        .now-playing {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 18px;
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-        }
+.content{
+    width:100%;
+    max-width:850px;
+}
 
-        #song-title {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+.logo{
+    width:85px;
+    height:85px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#111;
+    border:3px solid #e7b94e;
+    box-shadow:0 0 30px rgba(0,0,0,.8);
+    font-size:35px;
+}
 
-        audio {
-            width: 100%;
-        }
+.tag{
+    display:inline-block;
+    margin-top:25px;
+    padding:8px 18px;
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:30px;
+    background:rgba(0,0,0,.35);
+    font-size:12px;
+    letter-spacing:2px;
+}
 
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 15px;
-        }
+h1{
+    font-family:Georgia,serif;
+    font-size:clamp(60px,10vw,120px);
+    line-height:.85;
+    margin:25px 0 15px;
+    text-shadow:0 6px 20px black;
+}
 
-        button {
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            background: white;
-            color: black;
-        }
+.subtitle{
+    letter-spacing:5px;
+    font-size:14px;
+    opacity:.8;
+}
 
-        button:hover {
-            transform: scale(1.05);
-        }
+/* PLAYER */
+.player{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:20;
+    width:min(760px,calc(100% - 30px));
+    background:rgba(15,12,10,.88);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:25px;
+    padding:13px 16px;
+    box-shadow:0 15px 50px rgba(0,0,0,.7);
+    backdrop-filter:blur(15px);
+}
 
-        #playlist {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto 40px;
-        }
+.player-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-        .song-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 10px 0;
-            padding: 12px 16px;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.12);
-        }
+.play{
+    width:48px;
+    height:48px;
+    border:0;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+}
 
-        .song-name {
-            font-size: 17px;
-        }
+.song-info{
+    flex:1;
+    min-width:0;
+}
 
-        .song-item button {
-            padding: 9px 15px;
-            font-size: 14px;
-        }
+.now{
+    font-size:10px;
+    letter-spacing:2px;
+    opacity:.6;
+}
 
-        .active {
-            background: rgba(255,255,255,0.25);
-        }
+.song-title{
+    font-weight:bold;
+    margin-top:4px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
 
-        @media (max-width: 600px) {
+.control{
+    border:0;
+    background:transparent;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
 
-            .header h1 {
-                font-size: 25px;
-            }
+.progress{
+    width:100%;
+    margin-top:10px;
+    cursor:pointer;
+}
 
-            #liveTime {
-                font-size: 23px;
-            }
+/* SONG LIST */
+.list{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:30;
+    overflow:auto;
+    background:rgba(10,8,7,.97);
+    padding:90px 20px 130px;
+}
 
-            #song-title {
-                font-size: 20px;
-            }
+.list.show{
+    display:block;
+}
 
-            .controls {
-                flex-direction: column;
-            }
+.list-box{
+    width:min(850px,100%);
+    margin:auto;
+}
 
-            button {
-                width: 100%;
-            }
-        }
-    </style>
+.list h2{
+    font-size:32px;
+}
+
+.close{
+    float:right;
+    background:transparent;
+    color:white;
+    border:1px solid white;
+    border-radius:20px;
+    padding:8px 15px;
+    cursor:pointer;
+}
+
+.song{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    padding:14px 16px;
+    margin:8px 0;
+    border-radius:14px;
+    background:rgba(255,255,255,.09);
+}
+
+.song.active{
+    background:rgba(255,255,255,.22);
+}
+
+.song button{
+    border:0;
+    border-radius:20px;
+    padding:9px 16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .top{
+        padding:14px;
+    }
+
+    .time{
+        font-size:18px;
+    }
+
+    .top button{
+        padding:8px 12px;
+        font-size:12px;
+    }
+
+    h1{
+        font-size:60px;
+    }
+
+    .subtitle{
+        font-size:10px;
+        letter-spacing:3px;
+    }
+
+    .player{
+        bottom:10px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="header">
-        <h1>🎵 MY MUSIC 🎵</h1>
+<!-- TOP -->
+<div class="top">
+
+    <div>
+        <div class="time" id="time">11:00 AM</div>
+        <div class="date" id="date"></div>
     </div>
 
-    <div class="date-time">
-        <div id="liveDate"></div>
-        <div id="liveTime"></div>
-    </div>
+    <button onclick="openSongs()">🎵 ALL SONGS</button>
 
-    <div class="now-playing">
+</div>
 
-        <div id="song-title">
-            🎵 Song 1
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="content">
+
+        <div class="logo">▶</div>
+
+        <div class="tag">
+            NOW PLAYING • MY MUSIC
         </div>
 
-        <audio id="audio" controls></audio>
+        <h1>
+            MY<br>
+            MUSIC
+        </h1>
 
-        <div class="controls">
-            <button onclick="previousSong()">⏮️ Previous</button>
-            <button onclick="nextSong()">⏭️ Next</button>
+        <div class="subtitle">
+            YOUR PERSONAL MUSIC STATION
         </div>
 
     </div>
 
-    <div id="playlist"></div>
+</div>
 
 
-    <script>
+<!-- PLAYER -->
+<div class="player">
 
-        /* =========================
-           35 SONGS
-        ========================= */
+    <div class="player-row">
 
-        const songs = [];
+        <button class="play" id="playButton" onclick="playPause()">
+            ▶
+        </button>
 
-        for (let i = 1; i <= 35; i++) {
+        <div class="song-info">
 
-            songs.push({
-                title: "Song " + i,
-                src: "song (" + i + ").mp3"
-            });
+            <div class="now">
+                NOW PLAYING
+            </div>
+
+            <div class="song-title" id="songTitle">
+                Song 1
+            </div>
+
+        </div>
+
+        <button class="control" onclick="previousSong()">
+            ‹
+        </button>
+
+        <button class="control" onclick="nextSong()">
+            ›
+        </button>
+
+    </div>
+
+    <input
+        class="progress"
+        id="progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+    >
+
+    <audio id="audio"></audio>
+
+</div>
+
+
+<!-- SONG LIST -->
+<div class="list" id="songList">
+
+    <div class="list-box">
+
+        <button class="close" onclick="closeSongs()">
+            ✕ CLOSE
+        </button>
+
+        <h2>🎵 MY SONGS</h2>
+
+        <div id="songs"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* SONGS */
+
+const songs = [];
+
+for(let i=1;i<=35;i++){
+
+    songs.push({
+        name:"Song " + i,
+        file:"song (" + i + ").mp3"
+    });
+
+}
+
+
+/* PLAYER */
+
+let current = 0;
+
+const audio =
+document.getElementById("audio");
+
+const title =
+document.getElementById("songTitle");
+
+const playButton =
+document.getElementById("playButton");
+
+const progress =
+document.getElementById("progress");
+
+
+/* LOAD SONG */
+
+function loadSong(index,auto=false){
+
+    current = index;
+
+    audio.src = songs[current].file;
+
+    title.innerText =
+    "🎵 " + songs[current].name;
+
+    progress.value = 0;
+
+    updateList();
+
+    if(auto){
+
+        audio.play().catch(()=>{});
+
+    }
+
+}
+
+
+/* PLAY / PAUSE */
+
+function playPause(){
+
+    if(audio.paused){
+
+        audio.play().catch(()=>{});
+
+    }else{
+
+        audio.pause();
+
+    }
+
+}
+
+
+/* PLAY BUTTON */
+
+audio.addEventListener("play",function(){
+
+    playButton.innerText="❚❚";
+
+});
+
+
+audio.addEventListener("pause",function(){
+
+    playButton.innerText="▶";
+
+});
+
+
+/* AUTOMATIC NEXT SONG */
+
+audio.addEventListener("ended",function(){
+
+    current++;
+
+    if(current >= songs.length){
+
+        current=0;
+
+    }
+
+    loadSong(current,true);
+
+});
+
+
+/* NEXT */
+
+function nextSong(){
+
+    current++;
+
+    if(current >= songs.length){
+
+        current=0;
+
+    }
+
+    loadSong(current,true);
+
+}
+
+
+/* PREVIOUS */
+
+function previousSong(){
+
+    current--;
+
+    if(current < 0){
+
+        current=songs.length-1;
+
+    }
+
+    loadSong(current,true);
+
+}
+
+
+/* PROGRESS */
+
+audio.addEventListener("timeupdate",function(){
+
+    if(audio.duration){
+
+        progress.value =
+        (audio.currentTime/audio.duration)*100;
+
+    }
+
+});
+
+
+progress.addEventListener("input",function(){
+
+    if(audio.duration){
+
+        audio.currentTime =
+        (progress.value/100)*audio.duration;
+
+    }
+
+});
+
+
+/* SONG LIST */
+
+function createList(){
+
+    const box =
+    document.getElementById("songs");
+
+    box.innerHTML="";
+
+    songs.forEach(function(song,index){
+
+        const item =
+        document.createElement("div");
+
+        item.className="song";
+
+        item.innerHTML=`
+
+            <span>
+                🎵 ${song.name}
+            </span>
+
+            <button onclick="loadSong(${index},true)">
+                ▶ PLAY
+            </button>
+
+        `;
+
+        box.appendChild(item);
+
+    });
+
+}
+
+
+function updateList(){
+
+    const items =
+    document.querySelectorAll(".song");
+
+    items.forEach(function(item,index){
+
+        if(index===current){
+
+            item.classList.add("active");
+
+        }else{
+
+            item.classList.remove("active");
 
         }
 
+    });
 
-        /* =========================
-           MUSIC PLAYER
-        ========================= */
+}
 
-        let currentSong = 0;
 
-        const audio = document.getElementById("audio");
-        const title = document.getElementById("song-title");
-        const playlist = document.getElementById("playlist");
+/* OPEN / CLOSE */
 
+function openSongs(){
 
-        /* Song play function */
+    document
+    .getElementById("songList")
+    .classList.add("show");
 
-        function playSong(index) {
+    updateList();
 
-            currentSong = index;
+}
 
-            audio.src = songs[index].src;
 
-            title.textContent = "🎵 " + songs[index].title;
+function closeSongs(){
 
-            audio.play().catch(function(error) {
-                console.log("पहले Play button दबाएँ:", error);
-            });
+    document
+    .getElementById("songList")
+    .classList.remove("show");
 
-            updatePlaylist();
-        }
+}
 
 
-        /* =========================
-           AUTOMATIC NEXT SONG
-        ========================= */
+/* DATE + TIME */
 
-        audio.addEventListener("ended", function() {
+function updateTime(){
 
-            currentSong++;
+    const now=new Date();
 
-            /* आखिरी song के बाद फिर Song 1 */
+    document.getElementById("time").innerText =
+    now.toLocaleTimeString("en-IN",{
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit",
+        hour12:true
+    });
 
-            if (currentSong >= songs.length) {
-                currentSong = 0;
-            }
+    document.getElementById("date").innerText =
+    now.toLocaleDateString("en-IN",{
+        weekday:"long",
+        day:"2-digit",
+        month:"long",
+        year:"numeric"
+    }).toUpperCase();
 
-            playSong(currentSong);
+}
 
-        });
 
+/* START */
 
-        /* =========================
-           NEXT BUTTON
-        ========================= */
+createList();
 
-        function nextSong() {
+loadSong(0,false);
 
-            currentSong++;
+updateTime();
 
-            if (currentSong >= songs.length) {
-                currentSong = 0;
-            }
+setInterval(updateTime,1000);
 
-            playSong(currentSong);
-        }
-
-
-        /* =========================
-           PREVIOUS BUTTON
-        ========================= */
-
-        function previousSong() {
-
-            currentSong--;
-
-            if (currentSong < 0) {
-                currentSong = songs.length - 1;
-            }
-
-            playSong(currentSong);
-        }
-
-
-        /* =========================
-           CREATE PLAYLIST
-        ========================= */
-
-        function createPlaylist() {
-
-            playlist.innerHTML = "";
-
-            songs.forEach(function(song, index) {
-
-                const item = document.createElement("div");
-
-                item.className = "song-item";
-
-                item.innerHTML = `
-                    <span class="song-name">
-                        🎵 ${song.title}
-                    </span>
-
-                    <button onclick="playSong(${index})">
-                        ▶️ Play
-                    </button>
-                `;
-
-                playlist.appendChild(item);
-
-            });
-
-        }
-
-
-        /* =========================
-           ACTIVE SONG
-        ========================= */
-
-        function updatePlaylist() {
-
-            const items = document.querySelectorAll(".song-item");
-
-            items.forEach(function(item, index) {
-
-                if (index === currentSong) {
-                    item.classList.add("active");
-                } else {
-                    item.classList.remove("active");
-                }
-
-            });
-
-        }
-
-
-        /* =========================
-           DATE & TIME
-        ========================= */
-
-        function updateDateTime() {
-
-            const now = new Date();
-
-            const date = now.toLocaleDateString("hi-IN", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric"
-            });
-
-            const time = now.toLocaleTimeString("hi-IN", {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                hour12: true
-            });
-
-            document.getElementById("liveDate").textContent = date;
-
-            document.getElementById("liveTime").textContent = time;
-        }
-
-
-        /* =========================
-           START WEBSITE
-        ========================= */
-
-        createPlaylist();
-
-        updateDateTime();
-
-        setInterval(updateDateTime, 1000);
-
-
-        /* पहले Song को तैयार रखें */
-
-        audio.src = songs[0].src;
-
-        title.textContent = "🎵 " + songs[0].title;
-
-        updatePlaylist();
-
-    </script>
+</script>
 
 </body>
-
 </html>
