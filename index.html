@@ -9,10 +9,6 @@
 
 <style>
 
-/* =====================================================
-   BASIC
-===================================================== */
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -26,190 +22,118 @@ body{
 }
 
 body{
-
     min-height:100vh;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family:Arial, Helvetica, sans-serif;
     color:white;
-
     overflow-x:hidden;
-
     background:#111;
-
 }
 
-
-/* =====================================================
-   REAL BACKGROUND IMAGE
-===================================================== */
+/* =========================
+   BACKGROUND IMAGE
+========================= */
 
 #backgroundImage{
-
     position:fixed;
-
     inset:0;
-
     width:100%;
     height:100%;
-
     object-fit:cover;
-
     object-position:center;
-
     z-index:0;
-
-    transition:
-        opacity .7s ease,
-        transform 8s ease;
-
+    opacity:1;
+    transition:opacity .7s ease;
 }
-
 
 /* DARK OVERLAY */
 
 #backgroundDark{
-
     position:fixed;
-
     inset:0;
-
     z-index:1;
-
     pointer-events:none;
 
     background:
         linear-gradient(
-            rgba(0,0,0,.38),
-            rgba(0,0,0,.68)
+            rgba(0,0,0,.25),
+            rgba(0,0,0,.60)
         );
-
 }
 
-
-/* =====================================================
+/* =========================
    EFFECTS
-===================================================== */
+========================= */
 
 #effects{
-
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     overflow:hidden;
-
     z-index:2;
-
     opacity:0;
-
-    transition:
-        opacity .5s;
-
+    transition:opacity .5s;
 }
 
 #effects.active{
-
     opacity:1;
-
 }
 
-
-/* LIGHTS */
-
 .light{
-
     position:absolute;
-
     width:250px;
-
     height:250px;
-
     border-radius:50%;
-
     filter:blur(55px);
-
     opacity:.55;
 
     animation:
         moveLight
         5s infinite alternate ease-in-out;
-
 }
 
 .light.one{
-
     background:#8b5cf6;
-
     left:5%;
-
     top:15%;
-
 }
 
 .light.two{
-
     background:#ec4899;
-
     right:5%;
-
     top:30%;
-
     animation-delay:1s;
-
 }
 
 .light.three{
-
     background:#06b6d4;
-
     left:35%;
-
     bottom:5%;
-
     animation-delay:2s;
-
 }
-
 
 @keyframes moveLight{
 
     0%{
-
         transform:
             translate(0,0)
             scale(.8);
-
     }
 
     100%{
-
         transform:
             translate(150px,-80px)
             scale(1.3);
-
     }
 
 }
 
-
 /* PARTICLES */
 
 .particle{
-
     position:absolute;
-
     width:5px;
-
     height:5px;
-
     background:white;
-
     border-radius:50%;
 
     box-shadow:
@@ -220,131 +144,87 @@ body{
         particleMove
         linear
         infinite;
-
 }
-
 
 @keyframes particleMove{
 
     from{
-
         transform:
             translateY(110vh)
             rotate(0deg);
-
         opacity:0;
-
     }
 
     15%{
-
         opacity:1;
-
     }
 
     85%{
-
         opacity:1;
-
     }
 
     to{
-
         transform:
             translateY(-20vh)
             rotate(360deg);
-
         opacity:0;
-
     }
 
 }
 
-
-/* =====================================================
+/* =========================
    PAGE
-===================================================== */
+========================= */
 
 .page{
-
     position:relative;
-
     z-index:5;
-
     min-height:100vh;
-
 }
 
-
-/* =====================================================
+/* =========================
    TOP
-===================================================== */
+========================= */
 
 .top{
-
     width:100%;
-
-    padding:
-        22px 30px;
+    padding:22px 30px;
 
     display:flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        flex-start;
-
+    justify-content:space-between;
+    align-items:flex-start;
     gap:20px;
-
 }
 
-
 .clock{
-
     font-size:25px;
-
     font-weight:bold;
-
     letter-spacing:1px;
 
     text-shadow:
         0 3px 15px black;
-
 }
 
-
 .date{
-
     margin-top:5px;
-
     font-size:11px;
-
     letter-spacing:2px;
-
     opacity:.8;
 
     text-shadow:
         0 2px 10px black;
-
 }
 
-
-/* =====================================================
+/* =========================
    TOP BUTTONS
-===================================================== */
+========================= */
 
 .topButtons{
-
     display:flex;
-
     gap:10px;
-
 }
 
-
 .topBtn{
-
     border:
         1px solid
         rgba(255,255,255,.3);
@@ -358,34 +238,26 @@ body{
         11px 16px;
 
     border-radius:25px;
-
     cursor:pointer;
 
     font-size:12px;
-
     font-weight:bold;
 
     backdrop-filter:
         blur(12px);
 
     transition:.25s;
-
 }
 
-
 .topBtn:hover{
-
     background:
         rgba(255,255,255,.18);
 
     transform:
         translateY(-2px);
-
 }
 
-
 .specialBtn{
-
     background:
         linear-gradient(
             135deg,
@@ -394,37 +266,28 @@ body{
         );
 
     border:none;
-
 }
 
-
-/* =====================================================
+/* =========================
    MAIN
-===================================================== */
+========================= */
 
 .main{
-
     min-height:
         calc(100vh - 100px);
 
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
 
     padding:
         30px 20px 180px;
-
 }
 
-
 .badge{
-
     padding:
         10px 25px;
 
@@ -441,57 +304,39 @@ body{
         blur(10px);
 
     font-size:11px;
-
     letter-spacing:4px;
-
     margin-bottom:30px;
-
 }
 
-
 h1{
-
-    font-family:
-        Georgia,
-        serif;
+    font-family:Georgia, serif;
 
     font-size:
         clamp(50px,9vw,120px);
 
     line-height:.88;
-
     letter-spacing:-4px;
 
     text-shadow:
         0 5px 30px
         rgba(0,0,0,.9);
-
 }
-
 
 .subtitle{
-
     margin-top:28px;
-
     font-size:11px;
-
     letter-spacing:6px;
-
     opacity:.8;
-
 }
 
-
-/* =====================================================
+/* =========================
    PLAYER
-===================================================== */
+========================= */
 
 .player{
-
     position:fixed;
 
     left:50%;
-
     bottom:15px;
 
     transform:
@@ -520,27 +365,17 @@ h1{
         rgba(0,0,0,.65);
 
     z-index:100;
-
 }
-
 
 .playerRow{
-
     display:flex;
-
     align-items:center;
-
     gap:12px;
-
 }
 
-
 .playBtn{
-
     width:52px;
-
     height:52px;
-
     flex-shrink:0;
 
     border:
@@ -554,70 +389,42 @@ h1{
     color:white;
 
     font-size:19px;
-
     cursor:pointer;
-
 }
-
 
 .playBtn:hover{
-
     background:
         rgba(255,255,255,.18);
-
 }
-
 
 .songInfo{
-
     flex:1;
-
     min-width:0;
-
 }
-
 
 .nowPlaying{
-
     font-size:9px;
-
     letter-spacing:3px;
-
     opacity:.55;
-
     margin-bottom:4px;
-
 }
 
-
 .songTitle{
-
     font-size:16px;
-
     font-weight:bold;
 
     white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
-
 }
-
 
 .navButtons{
-
     display:flex;
-
     gap:7px;
-
 }
 
-
 .navBtn{
-
     width:42px;
-
     height:42px;
 
     border-radius:50%;
@@ -632,39 +439,26 @@ h1{
     color:white;
 
     font-size:22px;
-
     cursor:pointer;
-
 }
-
 
 .navBtn:hover{
-
     background:
         rgba(255,255,255,.2);
-
 }
 
-
-/* =====================================================
+/* =========================
    VOLUME
-===================================================== */
+========================= */
 
 .volumeControls{
-
     display:flex;
-
     align-items:center;
-
     gap:6px;
-
 }
 
-
 .volumeBtn{
-
     height:36px;
-
     min-width:42px;
 
     padding:
@@ -680,23 +474,17 @@ h1{
         rgba(255,255,255,.07);
 
     color:white;
-
     cursor:pointer;
-
 }
 
-
 .volumeBox{
-
     height:36px;
 
     padding:
         0 10px;
 
     display:flex;
-
     align-items:center;
-
     gap:7px;
 
     border-radius:20px;
@@ -707,29 +495,19 @@ h1{
 
     background:
         rgba(0,0,0,.3);
-
 }
-
 
 .volumeRange{
-
     width:100px;
-
     cursor:pointer;
-
-    accent-color:white;
-
 }
 
-
-/* =====================================================
+/* =========================
    PROGRESS
-===================================================== */
+========================= */
 
 .progress{
-
     width:100%;
-
     height:6px;
 
     margin-top:13px;
@@ -738,35 +516,24 @@ h1{
         rgba(255,255,255,.25);
 
     border-radius:10px;
-
     overflow:hidden;
-
     cursor:pointer;
-
 }
-
 
 .progressBar{
-
     width:0%;
-
     height:100%;
-
     background:white;
-
 }
 
-
-/* =====================================================
+/* =========================
    SONG WINDOW
-===================================================== */
+========================= */
 
 .songWindow{
-
     display:none;
 
     position:fixed;
-
     inset:0;
 
     z-index:500;
@@ -781,22 +548,16 @@ h1{
 
     backdrop-filter:
         blur(15px);
-
 }
 
-
 .songList{
-
     width:
         min(700px,100%);
 
     margin:auto;
-
 }
 
-
 .closeBtn{
-
     display:block;
 
     margin:
@@ -806,28 +567,20 @@ h1{
         10px 25px;
 
     border:0;
-
     border-radius:25px;
 
     background:white;
-
     color:black;
 
     font-weight:bold;
-
     cursor:pointer;
-
 }
 
-
 .songItem{
-
     display:flex;
 
     align-items:center;
-
-    justify-content:
-        space-between;
+    justify-content:space-between;
 
     gap:10px;
 
@@ -844,201 +597,140 @@ h1{
 
     background:
         rgba(255,255,255,.08);
-
 }
-
 
 .songItem.active{
-
     background:
         rgba(255,255,255,.22);
-
 }
-
 
 .songItem span{
-
     overflow:hidden;
-
     white-space:nowrap;
-
     text-overflow:ellipsis;
-
 }
 
-
 .songPlay{
-
     border:0;
-
     border-radius:20px;
 
     padding:
         8px 18px;
 
     cursor:pointer;
-
 }
 
-
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media(max-width:700px){
 
     .top{
-
         padding:15px;
-
     }
 
     .clock{
-
         font-size:18px;
-
     }
 
     .date{
-
         font-size:8px;
-
     }
 
     .topBtn{
-
         padding:
             9px 10px;
 
         font-size:9px;
-
     }
 
     h1{
-
         font-size:50px;
-
         letter-spacing:-2px;
-
     }
 
     .badge{
-
         font-size:8px;
-
         letter-spacing:2px;
-
     }
 
     .subtitle{
-
         font-size:8px;
-
         letter-spacing:3px;
-
     }
 
     .player{
-
         width:97%;
-
         padding:12px;
-
     }
 
     .playerRow{
-
         gap:7px;
-
     }
 
     .playBtn{
-
         width:44px;
-
         height:44px;
-
     }
 
     .songTitle{
-
         font-size:13px;
-
     }
 
     .navBtn{
-
         width:36px;
-
         height:36px;
-
     }
 
     .volumeRange{
-
         width:65px;
-
     }
 
 }
 
-
 @media(max-width:450px){
 
     .volumeBox{
-
         display:none;
-
     }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
+<!-- =========================
      BACKGROUND
-===================================================== -->
+========================= -->
 
 <img
     id="backgroundImage"
-    src="background%20(1).jpg"
-    alt=""
+    src="bg1.%20jpg"
+    alt="Background"
 >
-
 
 <div id="backgroundDark"></div>
 
-
-<!-- =====================================================
-     EFFECTS
-===================================================== -->
+<!-- EFFECTS -->
 
 <div id="effects">
 
     <div class="light one"></div>
-
     <div class="light two"></div>
-
     <div class="light three"></div>
 
 </div>
 
-
 <div class="page">
 
-
-<!-- =====================================================
+<!-- =========================
      TOP
-===================================================== -->
+========================= -->
 
 <header class="top">
-
 
     <div>
 
@@ -1050,7 +742,6 @@ h1{
 
         </div>
 
-
         <div
             class="date"
             id="liveDate">
@@ -1059,9 +750,7 @@ h1{
 
     </div>
 
-
     <div class="topButtons">
-
 
         <button
             class="topBtn"
@@ -1071,7 +760,6 @@ h1{
 
         </button>
 
-
         <button
             class="topBtn specialBtn"
             onclick="startSpecialEffect()">
@@ -1080,19 +768,15 @@ h1{
 
         </button>
 
-
     </div>
-
 
 </header>
 
-
-<!-- =====================================================
+<!-- =========================
      MAIN
-===================================================== -->
+========================= -->
 
 <main class="main">
-
 
     <div class="badge">
 
@@ -1100,15 +784,12 @@ h1{
 
     </div>
 
-
     <h1>
 
         UTTAM<br>
-
         PHOTOGRAPHY
 
     </h1>
-
 
     <div class="subtitle">
 
@@ -1116,19 +797,15 @@ h1{
 
     </div>
 
-
 </main>
 
-
-<!-- =====================================================
+<!-- =========================
      PLAYER
-===================================================== -->
+========================= -->
 
 <div class="player">
 
-
     <div class="playerRow">
-
 
         <button
             class="playBtn"
@@ -1139,16 +816,11 @@ h1{
 
         </button>
 
-
         <div class="songInfo">
 
-
             <div class="nowPlaying">
-
                 NOW PLAYING
-
             </div>
-
 
             <div
                 class="songTitle"
@@ -1158,12 +830,9 @@ h1{
 
             </div>
 
-
         </div>
 
-
         <div class="navButtons">
-
 
             <button
                 class="navBtn"
@@ -1173,7 +842,6 @@ h1{
 
             </button>
 
-
             <button
                 class="navBtn"
                 onclick="nextSong()">
@@ -1182,12 +850,9 @@ h1{
 
             </button>
 
-
         </div>
 
-
         <div class="volumeControls">
-
 
             <button
                 class="volumeBtn"
@@ -1198,7 +863,6 @@ h1{
 
             </button>
 
-
             <button
                 class="volumeBtn"
                 onclick="volumeDown()">
@@ -1206,7 +870,6 @@ h1{
                 −
 
             </button>
-
 
             <div class="volumeBox">
 
@@ -1225,7 +888,6 @@ h1{
 
             </div>
 
-
             <button
                 class="volumeBtn"
                 onclick="volumeUp()">
@@ -1234,12 +896,9 @@ h1{
 
             </button>
 
-
         </div>
 
-
     </div>
-
 
     <div
         class="progress"
@@ -1248,26 +907,21 @@ h1{
         <div
             class="progressBar"
             id="progressBar">
-
         </div>
 
     </div>
 
-
 </div>
 
-
-<!-- =====================================================
+<!-- =========================
      SONG WINDOW
-===================================================== -->
+========================= -->
 
 <div
     class="songWindow"
     id="songWindow">
 
-
     <div class="songList">
-
 
         <button
             class="closeBtn"
@@ -1277,24 +931,18 @@ h1{
 
         </button>
 
-
         <div id="songList"></div>
-
 
     </div>
 
-
 </div>
 
-
 </div>
-
 
 <audio
     id="audio"
     preload="metadata">
 </audio>
-
 
 <script>
 
@@ -1302,37 +950,42 @@ h1{
    BACKGROUNDS
 ===================================================== */
 
+/*
+   IMPORTANT:
+   GitHub files ke exact naam:
+   bg1. jpg
+   bg2. jpg
+   bg3. jpg
+   bg4. jpg
+   bg5. jpg
+*/
+
 const backgrounds = [
 
-    "background%20(1).jpg",
-    "background%20(2).jpg",
-    "background%20(3).jpg",
-    "background%20(4).jpg",
-    "background%20(5).jpg"
+    "bg1.%20jpg",
+    "bg2.%20jpg",
+    "bg3.%20jpg",
+    "bg4.%20jpg",
+    "bg5.%20jpg"
 
 ];
 
-
 let currentBackground = 0;
-
 
 const backgroundImage =
     document.getElementById(
         "backgroundImage"
     );
 
-
-/* PRELOAD ALL 5 BACKGROUNDS */
+/* PRELOAD */
 
 backgrounds.forEach(function(file){
 
-    const img =
-        new Image();
+    const img = new Image();
 
     img.src = file;
 
 });
-
 
 /* CHANGE BACKGROUND */
 
@@ -1349,9 +1002,7 @@ function changeBackground(){
 
     }
 
-
     backgroundImage.style.opacity = "0";
-
 
     setTimeout(function(){
 
@@ -1364,7 +1015,6 @@ function changeBackground(){
     },300);
 
 }
-
 
 /* =====================================================
    SONGS
@@ -1379,62 +1029,51 @@ for(
 ){
 
     songs.push(
-        "song (" +
-        i +
+        "song%20(%"
+        + i +
         ").mp3"
     );
 
 }
 
-
 let currentSong = 0;
-
 
 const audio =
     document.getElementById(
         "audio"
     );
 
-
 const playBtn =
     document.getElementById(
         "playBtn"
     );
-
 
 const songTitle =
     document.getElementById(
         "songTitle"
     );
 
-
 const progress =
     document.getElementById(
         "progress"
     );
-
 
 const progressBar =
     document.getElementById(
         "progressBar"
     );
 
-
 const volumeRange =
     document.getElementById(
         "volumeRange"
     );
-
 
 const muteBtn =
     document.getElementById(
         "muteBtn"
     );
 
-
-/* =====================================================
-   LOAD SONG
-===================================================== */
+/* LOAD SONG */
 
 function loadSong(){
 
@@ -1454,10 +1093,7 @@ function loadSong(){
 
 }
 
-
-/* =====================================================
-   PLAY
-===================================================== */
+/* PLAY */
 
 function togglePlay(){
 
@@ -1475,10 +1111,7 @@ function togglePlay(){
 
 }
 
-
-/* =====================================================
-   NEXT
-===================================================== */
+/* NEXT */
 
 function nextSong(){
 
@@ -1500,10 +1133,7 @@ function nextSong(){
 
 }
 
-
-/* =====================================================
-   PREVIOUS
-===================================================== */
+/* PREVIOUS */
 
 function previousSong(){
 
@@ -1523,14 +1153,12 @@ function previousSong(){
 
 }
 
-
 /* AUTO NEXT */
 
 audio.addEventListener(
     "ended",
     nextSong
 );
-
 
 /* PLAY ICON */
 
@@ -1544,7 +1172,6 @@ audio.addEventListener(
     }
 );
 
-
 audio.addEventListener(
     "pause",
     function(){
@@ -1555,10 +1182,7 @@ audio.addEventListener(
     }
 );
 
-
-/* =====================================================
-   PROGRESS
-===================================================== */
+/* PROGRESS */
 
 audio.addEventListener(
     "timeupdate",
@@ -1581,7 +1205,6 @@ audio.addEventListener(
 
     }
 );
-
 
 progress.addEventListener(
     "click",
@@ -1610,7 +1233,6 @@ progress.addEventListener(
     }
 );
 
-
 /* =====================================================
    VOLUME
 ===================================================== */
@@ -1632,7 +1254,6 @@ function setVolume(value){
 
 }
 
-
 function volumeUp(){
 
     setVolume(
@@ -1643,7 +1264,6 @@ function volumeUp(){
     );
 
 }
-
 
 function volumeDown(){
 
@@ -1656,7 +1276,6 @@ function volumeDown(){
 
 }
 
-
 function toggleMute(){
 
     audio.muted =
@@ -1668,7 +1287,6 @@ function toggleMute(){
         : "🔊";
 
 }
-
 
 /* =====================================================
    SONG LIST
@@ -1683,7 +1301,6 @@ function createSongList(){
 
     list.innerHTML = "";
 
-
     songs.forEach(
         function(song,index){
 
@@ -1694,7 +1311,6 @@ function createSongList(){
 
             item.className =
                 "songItem";
-
 
             item.innerHTML = `
 
@@ -1712,14 +1328,12 @@ function createSongList(){
 
             `;
 
-
             list.appendChild(item);
 
         }
     );
 
 }
-
 
 function updateSongList(){
 
@@ -1740,7 +1354,6 @@ function updateSongList(){
 
 }
 
-
 function selectSong(index){
 
     currentSong =
@@ -1755,7 +1368,6 @@ function selectSong(index){
 
 }
 
-
 function openSongs(){
 
     document
@@ -1766,7 +1378,6 @@ function openSongs(){
         "block";
 
 }
-
 
 function closeSongs(){
 
@@ -1779,7 +1390,6 @@ function closeSongs(){
 
 }
 
-
 /* =====================================================
    DATE / TIME
 ===================================================== */
@@ -1788,7 +1398,6 @@ function updateDateTime(){
 
     const now =
         new Date();
-
 
     document
         .getElementById(
@@ -1804,7 +1413,6 @@ function updateDateTime(){
                 hour12:true
             }
         );
-
 
     document
         .getElementById(
@@ -1823,14 +1431,12 @@ function updateDateTime(){
 
 }
 
-
 updateDateTime();
 
 setInterval(
     updateDateTime,
     1000
 );
-
 
 /* =====================================================
    KEYBOARD
@@ -1849,7 +1455,6 @@ document.addEventListener(
 
         }
 
-
         if(
             event.code ===
             "Space"
@@ -1861,7 +1466,6 @@ document.addEventListener(
 
         }
 
-
         if(
             event.code ===
             "ArrowRight"
@@ -1870,7 +1474,6 @@ document.addEventListener(
             nextSong();
 
         }
-
 
         if(
             event.code ===
@@ -1884,13 +1487,11 @@ document.addEventListener(
     }
 );
 
-
 /* =====================================================
-   SPECIAL
+   SPECIAL EFFECT
 ===================================================== */
 
 let specialTimer = null;
-
 
 function createParticles(){
 
@@ -1898,7 +1499,6 @@ function createParticles(){
         document.getElementById(
             "effects"
         );
-
 
     effects
         .querySelectorAll(
@@ -1912,7 +1512,6 @@ function createParticles(){
             }
         );
 
-
     for(
         let i = 0;
         i < 45;
@@ -1924,16 +1523,13 @@ function createParticles(){
                 "div"
             );
 
-
         particle.className =
             "particle";
-
 
         particle.style.left =
             Math.random() *
             100 +
             "%";
-
 
         particle.style.animationDuration =
             (
@@ -1942,13 +1538,11 @@ function createParticles(){
             ) +
             "s";
 
-
         particle.style.animationDelay =
             (
                 -Math.random() * 5
             ) +
             "s";
-
 
         particle.style.width =
             (
@@ -1957,10 +1551,8 @@ function createParticles(){
             ) +
             "px";
 
-
         particle.style.height =
             particle.style.width;
-
 
         effects.appendChild(
             particle
@@ -1970,34 +1562,24 @@ function createParticles(){
 
 }
 
-
 function startSpecialEffect(){
 
-    /* BACKGROUND CHANGE */
-
     changeBackground();
-
-
-    /* EFFECT */
 
     const effects =
         document.getElementById(
             "effects"
         );
 
-
     clearTimeout(
         specialTimer
     );
 
-
     createParticles();
-
 
     effects.classList.add(
         "active"
     );
-
 
     specialTimer =
         setTimeout(
@@ -2012,7 +1594,6 @@ function startSpecialEffect(){
         );
 
 }
-
 
 /* =====================================================
    START
