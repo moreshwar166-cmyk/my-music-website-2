@@ -8,6 +8,10 @@
 
 <style>
 
+/* =========================
+   BASIC
+========================= */
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -20,28 +24,168 @@ html,body{
 }
 
 body{
-
     min-height:100vh;
 
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 
     color:white;
 
-    background-color:#090909;
+    overflow-x:hidden;
 
-    background-image:
+    background:
         linear-gradient(
-            rgba(0,0,0,.48),
+            rgba(0,0,0,.45),
             rgba(0,0,0,.68)
         ),
-        url("background.jpg");
+        url("./background.jpg");
 
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
     background-attachment:fixed;
 
-    overflow-x:hidden;
+    background-color:#111;
+}
+
+
+/* =========================
+   INTERESTING EFFECT LAYER
+========================= */
+
+#effects{
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:1;
+
+    opacity:0;
+
+    transition:opacity .5s;
+}
+
+#effects.active{
+    opacity:1;
+}
+
+
+/* LIGHT */
+
+.light{
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    filter:blur(50px);
+
+    opacity:.55;
+
+    animation:moveLight 5s infinite alternate ease-in-out;
+}
+
+.light.one{
+    background:#8b5cf6;
+    left:5%;
+    top:15%;
+}
+
+.light.two{
+    background:#ec4899;
+    right:5%;
+    top:30%;
+
+    animation-delay:1s;
+}
+
+.light.three{
+    background:#06b6d4;
+    left:35%;
+    bottom:5%;
+
+    animation-delay:2s;
+}
+
+@keyframes moveLight{
+
+    0%{
+        transform:translate(0,0) scale(.8);
+    }
+
+    100%{
+        transform:translate(150px,-80px) scale(1.3);
+    }
+
+}
+
+
+/* PARTICLES */
+
+.particle{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    background:white;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px white;
+
+    animation:
+        particleMove linear infinite;
+
+}
+
+@keyframes particleMove{
+
+    from{
+        transform:
+            translateY(110vh)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    85%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+            translateY(-20vh)
+            rotate(360deg);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.page{
+    position:relative;
+
+    z-index:5;
+
+    min-height:100vh;
 }
 
 
@@ -87,6 +231,10 @@ body{
 }
 
 
+/* =========================
+   TOP BUTTONS
+========================= */
+
 .topButtons{
 
     display:flex;
@@ -129,15 +277,16 @@ body{
 }
 
 
-/* SPECIAL BUTTON */
+/* SPECIAL */
 
 .specialBtn{
 
-    background:linear-gradient(
-        135deg,
-        #7c3aed,
-        #ec4899
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #ec4899
+        );
 
     border:none;
 }
@@ -238,8 +387,6 @@ h1{
 
     backdrop-filter:blur(20px);
 
-    -webkit-backdrop-filter:blur(20px);
-
     box-shadow:
         0 10px 40px rgba(0,0,0,.60);
 
@@ -262,7 +409,6 @@ h1{
 .playBtn{
 
     width:52px;
-
     height:52px;
 
     flex-shrink:0;
@@ -332,7 +478,6 @@ h1{
 .navBtn{
 
     width:42px;
-
     height:42px;
 
     border-radius:50%;
@@ -356,7 +501,7 @@ h1{
 
 
 /* =========================
-   VOLUME RIGHT
+   VOLUME
 ========================= */
 
 .volumeControls{
@@ -574,108 +719,6 @@ h1{
 
 
 /* =========================
-   SPECIAL POPUP
-========================= */
-
-.specialPopup{
-
-    position:fixed;
-
-    top:50%;
-
-    left:50%;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.7);
-
-    width:min(500px,90%);
-
-    padding:35px 25px;
-
-    text-align:center;
-
-    border-radius:25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(20,20,20,.96),
-            rgba(80,30,100,.96)
-        );
-
-    border:1px solid rgba(255,255,255,.25);
-
-    box-shadow:
-        0 20px 80px rgba(0,0,0,.8);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.4s;
-
-    z-index:2000;
-}
-
-
-.specialPopup.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:
-        translate(-50%,-50%)
-        scale(1);
-}
-
-
-.specialPopup h2{
-
-    font-size:30px;
-
-    margin-bottom:12px;
-}
-
-
-.specialPopup p{
-
-    font-size:15px;
-
-    opacity:.8;
-
-    margin-bottom:20px;
-}
-
-
-.specialTimer{
-
-    width:100%;
-
-    height:5px;
-
-    border-radius:10px;
-
-    background:rgba(255,255,255,.20);
-
-    overflow:hidden;
-}
-
-
-.specialTimerBar{
-
-    width:100%;
-
-    height:100%;
-
-    background:white;
-
-    transform-origin:left;
-}
-
-
-/* =========================
    MOBILE
 ========================= */
 
@@ -686,12 +729,10 @@ h1{
         padding:15px;
     }
 
-
     .clock{
 
         font-size:18px;
     }
-
 
     .date{
 
@@ -700,14 +741,12 @@ h1{
         letter-spacing:1px;
     }
 
-
     .topBtn{
 
         padding:9px 10px;
 
         font-size:9px;
     }
-
 
     h1{
 
@@ -716,14 +755,12 @@ h1{
         letter-spacing:-2px;
     }
 
-
     .badge{
 
         font-size:8px;
 
         letter-spacing:2px;
     }
-
 
     .subtitle{
 
@@ -732,7 +769,6 @@ h1{
         letter-spacing:3px;
     }
 
-
     .player{
 
         width:97%;
@@ -740,12 +776,10 @@ h1{
         padding:12px;
     }
 
-
     .playerRow{
 
         gap:7px;
     }
-
 
     .playBtn{
 
@@ -754,12 +788,10 @@ h1{
         height:44px;
     }
 
-
     .songTitle{
 
         font-size:13px;
     }
-
 
     .navBtn{
 
@@ -770,7 +802,6 @@ h1{
         font-size:20px;
     }
 
-
     .volumeBtn{
 
         min-width:34px;
@@ -780,12 +811,10 @@ h1{
         font-size:10px;
     }
 
-
     .volumeBox{
 
         padding:0 7px;
     }
-
 
     .volumeRange{
 
@@ -829,6 +858,28 @@ h1{
 <body>
 
 
+<!-- =========================
+     EFFECTS
+========================= -->
+
+<div id="effects">
+
+    <div class="light one"></div>
+
+    <div class="light two"></div>
+
+    <div class="light three"></div>
+
+</div>
+
+
+<!-- =========================
+     PAGE
+========================= -->
+
+<div class="page">
+
+
 <!-- TOP -->
 
 <header class="top">
@@ -863,11 +914,9 @@ h1{
         </button>
 
 
-        <!-- नया BUTTON -->
-
         <button
             class="topBtn specialBtn"
-            onclick="showSpecial()">
+            onclick="startSpecialEffect()">
 
             ✨ SPECIAL
 
@@ -913,6 +962,7 @@ h1{
     class="player"
     id="player">
 
+
     <div class="playerRow">
 
 
@@ -933,6 +983,7 @@ h1{
                 NOW PLAYING
 
             </div>
+
 
             <div
                 class="songTitle"
@@ -967,7 +1018,7 @@ h1{
         </div>
 
 
-        <!-- VOLUME RIGHT SIDE -->
+        <!-- VOLUME -->
 
         <div class="volumeControls">
 
@@ -1057,35 +1108,6 @@ h1{
 
 </div>
 
-
-<!-- SPECIAL POPUP -->
-
-<div
-    class="specialPopup"
-    id="specialPopup">
-
-    <h2>
-        ✨ UTTAM PHOTOGRAPHY ✨
-    </h2>
-
-    <p>
-        🎵 Welcome to My Music 🎵
-    </p>
-
-    <p>
-        Enjoy your favourite songs!
-    </p>
-
-
-    <div class="specialTimer">
-
-        <div
-            class="specialTimerBar"
-            id="specialTimerBar">
-
-        </div>
-
-    </div>
 
 </div>
 
@@ -1447,7 +1469,7 @@ function toggleMute(){
 
 
 /* =========================
-   ALL SONGS
+   SONG LIST
 ========================= */
 
 function createSongList(){
@@ -1623,7 +1645,7 @@ setInterval(
 
 
 /* =========================
-   SPACE KEY
+   SPACE = PLAY / PAUSE
 ========================= */
 
 document.addEventListener(
@@ -1666,60 +1688,119 @@ document.addEventListener(
 
 
 /* =========================
-   SPECIAL BUTTON
-   10 SECOND DISPLAY
+   SPECIAL EFFECT
 ========================= */
 
-let specialTimer;
+let specialTimer = null;
 
 
-function showSpecial(){
+function createParticles(){
 
-    const popup =
+    const effects =
         document.getElementById(
-            "specialPopup"
+            "effects"
         );
 
-    const bar =
-        document.getElementById(
-            "specialTimerBar"
+
+    /* पुराने particles हटाओ */
+
+    effects
+        .querySelectorAll(
+            ".particle"
+        )
+        .forEach(
+            function(p){
+
+                p.remove();
+
+            }
         );
 
+
+    /* नए particles */
+
+    for(
+        let i = 0;
+        i < 45;
+        i++
+    ){
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "particle";
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.animationDuration =
+            (3 + Math.random() * 6) + "s";
+
+
+        particle.style.animationDelay =
+            (-Math.random() * 5) + "s";
+
+
+        particle.style.width =
+            (2 + Math.random() * 5) + "px";
+
+
+        particle.style.height =
+            particle.style.width;
+
+
+        effects.appendChild(
+            particle
+        );
+
+    }
+
+}
+
+
+function startSpecialEffect(){
+
+    const effects =
+        document.getElementById(
+            "effects"
+        );
+
+
+    /* पुराने timer को बंद करो */
 
     clearTimeout(
         specialTimer
     );
 
 
-    popup.classList.add(
-        "show"
+    /* particles बनाओ */
+
+    createParticles();
+
+
+    /* effect चालू */
+
+    effects.classList.add(
+        "active"
     );
 
 
-    bar.style.transition =
-        "none";
-
-    bar.style.transform =
-        "scaleX(1)";
-
-
-    void bar.offsetWidth;
-
-
-    bar.style.transition =
-        "transform 10s linear";
-
-    bar.style.transform =
-        "scaleX(0)";
-
+    /* 10 सेकंड बाद बंद */
 
     specialTimer =
         setTimeout(
             function(){
 
-                popup.classList.remove(
-                    "show"
+                effects.classList.remove(
+                    "active"
                 );
+
 
             },
             10000
