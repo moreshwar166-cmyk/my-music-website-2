@@ -7,6 +7,7 @@
 <title>UTTAM PHOTOGRAPHY</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -15,13 +16,16 @@
 
 body{
     min-height:100vh;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     color:white;
+
     background:#000;
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
-    transition:background-image 0.8s ease;
+
+    transition:background-image .8s ease;
+
     overflow-x:hidden;
 }
 
@@ -29,13 +33,14 @@ body::before{
     content:"";
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.48);
+    background:rgba(0,0,0,.48);
     z-index:-1;
 }
 
 .top{
     position:relative;
     padding:25px 30px;
+
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
@@ -55,181 +60,332 @@ body::before{
 
 .allSongs{
     border:1px solid rgba(255,255,255,.4);
+
     background:rgba(20,20,20,.55);
+
     color:white;
+
     padding:12px 20px;
+
     border-radius:30px;
+
     cursor:pointer;
+
     backdrop-filter:blur(15px);
 }
 
 .hero{
     min-height:calc(100vh - 100px);
+
     display:flex;
     flex-direction:column;
+
     justify-content:center;
     align-items:center;
+
     text-align:center;
-    padding:30px 20px 120px;
+
+    padding:30px 20px 170px;
 }
 
 .smallTitle{
     border:1px solid rgba(255,255,255,.35);
+
     background:rgba(0,0,0,.25);
+
     padding:10px 28px;
+
     border-radius:30px;
+
     font-size:12px;
+
     letter-spacing:4px;
+
     margin-bottom:35px;
+
     backdrop-filter:blur(12px);
 }
 
 h1{
     font-family:Georgia,serif;
+
     font-size:clamp(55px,9vw,125px);
+
     line-height:.85;
+
     letter-spacing:-4px;
-   background:linear-gradient(
-    180deg,
-    #ffffff,
-    #d9d9d9,
-    #ffffff,
-    #999999
+
+    background:linear-gradient(
+        180deg,
+        #ffffff,
+        #d9d9d9,
+        #ffffff,
+        #999999
     );
+
     -webkit-background-clip:text;
+
     color:transparent;
+
     text-shadow:0 5px 25px rgba(0,0,0,.7);
 }
 
 .sub{
     margin-top:30px;
+
     letter-spacing:7px;
+
     font-size:12px;
+
     opacity:.8;
 }
 
+
+/* PLAYER */
+
 .player{
     position:fixed;
+
     bottom:18px;
     left:50%;
+
     transform:translateX(-50%);
-    width:min(820px,90%);
+
+    width:min(900px,94%);
+
     padding:16px 20px;
+
     border:1px solid rgba(255,255,255,.35);
+
     border-radius:25px;
-    background:rgba(20,20,20,.38);
+
+    background:rgba(20,20,20,.50);
+
     backdrop-filter:blur(22px);
+
     -webkit-backdrop-filter:blur(22px);
+
     box-shadow:0 10px 40px rgba(0,0,0,.5);
+
+    z-index:10;
 }
 
 .playerTop{
     display:flex;
+
     align-items:center;
+
     gap:15px;
 }
 
 .play{
     width:52px;
     height:52px;
+
     border-radius:50%;
+
     border:2px solid white;
+
     background:rgba(255,255,255,.08);
+
     color:white;
+
     font-size:21px;
+
     cursor:pointer;
+
+    flex-shrink:0;
 }
 
 .info{
     flex:1;
+
     text-align:left;
 }
 
 .now{
     font-size:9px;
+
     letter-spacing:3px;
+
     opacity:.55;
+
     margin-bottom:5px;
 }
 
 .songName{
     font-size:17px;
+
     font-weight:bold;
 }
 
 .buttons{
     display:flex;
-    gap:20px;
+
+    gap:10px;
+
+    align-items:center;
 }
 
 .nextBtn{
     background:none;
+
     border:0;
+
     color:white;
+
     font-size:28px;
+
     cursor:pointer;
 }
 
+
+/* CONTROLS */
+
+.extraControls{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:12px;
+
+    flex-wrap:wrap;
+}
+
+.controlBtn{
+    border:1px solid rgba(255,255,255,.35);
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:7px 12px;
+
+    cursor:pointer;
+
+    font-size:13px;
+}
+
+.volume{
+    width:120px;
+
+    cursor:pointer;
+}
+
+
+/* PROGRESS */
+
 .progress{
     width:100%;
+
     margin-top:12px;
+
     height:6px;
+
     border-radius:10px;
+
     background:rgba(255,255,255,.25);
+
     cursor:pointer;
 }
 
 .progressBar{
     height:100%;
+
     width:0%;
+
     border-radius:10px;
+
     background:white;
 }
 
+
+/* SONG LIST */
+
 .songs{
     display:none;
+
     position:fixed;
+
     inset:0;
+
     z-index:20;
+
     background:rgba(0,0,0,.85);
+
     backdrop-filter:blur(15px);
+
     padding:50px 20px;
+
     overflow:auto;
 }
 
 .songList{
     max-width:700px;
+
     margin:auto;
 }
 
 .close{
     display:block;
+
     margin:0 auto 25px;
+
     background:white;
+
     border:0;
+
     padding:10px 25px;
+
     border-radius:20px;
+
     cursor:pointer;
 }
 
 .songItem{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     padding:14px 18px;
+
     margin:8px 0;
+
     border-radius:15px;
+
     background:rgba(255,255,255,.1);
 }
 
 .songItem button{
     border:0;
+
     border-radius:20px;
+
     padding:8px 18px;
+
     cursor:pointer;
 }
 
+
+/* FULLSCREEN */
+
+:fullscreen .player{
+    width:90%;
+}
+
+
+/* MOBILE */
+
 @media(max-width:600px){
+
     h1{
         letter-spacing:-2px;
     }
@@ -244,72 +400,227 @@ h1{
 
     .player{
         bottom:10px;
+        padding:14px;
     }
+
+    .songName{
+        font-size:14px;
+    }
+
+    .extraControls{
+        gap:6px;
+    }
+
+    .volume{
+        width:90px;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <div class="top">
+
     <div>
-        <div class="time" id="clock">00:00:00</div>
+
+        <div class="time" id="clock">
+            00:00:00
+        </div>
+
         <div class="date" id="date"></div>
+
     </div>
 
-    <button class="allSongs" onclick="openSongs()">🎵 ALL SONGS</button>
+
+    <button
+        class="allSongs"
+        onclick="openSongs()">
+
+        🎵 ALL SONGS
+
+    </button>
+
 </div>
+
 
 <section class="hero">
 
     <div class="smallTitle">
-        📸 &nbsp; U T T A M &nbsp; P H O T O G R A P H Y
+
+        📸 &nbsp;
+        U T T A M &nbsp;
+        P H O T O G R A P H Y
+
     </div>
 
+
     <h1>
+
         UTTAM<br>
         PHOTOGRAPHY
+
     </h1>
 
+
     <div class="sub">
+
         MUSIC • PHOTOGRAPHY • MEMORIES
+
     </div>
 
 </section>
 
+
 <!-- MUSIC PLAYER -->
 
-<div class="player">
+<div
+    class="player"
+    id="playerBox">
 
     <div class="playerTop">
 
-        <button class="play" id="playBtn" onclick="togglePlay()">▶</button>
+        <button
+            class="play"
+            id="playBtn"
+            onclick="togglePlay()">
+
+            ▶
+
+        </button>
+
 
         <div class="info">
-            <div class="now">NOW PLAYING</div>
-            <div class="songName" id="songName">Song 1</div>
+
+            <div class="now">
+                NOW PLAYING
+            </div>
+
+            <div
+                class="songName"
+                id="songName">
+
+                Song 1
+
+            </div>
+
         </div>
 
+
         <div class="buttons">
-            <button class="nextBtn" onclick="previousSong()">‹</button>
-            <button class="nextBtn" onclick="nextSong()">›</button>
+
+            <button
+                class="nextBtn"
+                onclick="previousSong()">
+
+                ‹
+
+            </button>
+
+
+            <button
+                class="nextBtn"
+                onclick="nextSong()">
+
+                ›
+
+            </button>
+
         </div>
 
     </div>
 
-    <div class="progress" onclick="seek(event)">
-        <div class="progressBar" id="progressBar"></div>
+
+    <!-- PROGRESS -->
+
+    <div
+        class="progress"
+        onclick="seek(event)">
+
+        <div
+            class="progressBar"
+            id="progressBar">
+        </div>
+
+    </div>
+
+
+    <!-- EXTRA CONTROLS -->
+
+    <div class="extraControls">
+
+        <button
+            class="controlBtn"
+            onclick="toggleMute()"
+            id="muteBtn">
+
+            🔊 Mute
+
+        </button>
+
+
+        <button
+            class="controlBtn"
+            onclick="changeVolume(-0.1)">
+
+            🔉 −
+
+        </button>
+
+
+        <input
+            class="volume"
+            id="volumeControl"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+            oninput="setVolume(this.value)">
+
+
+        <button
+            class="controlBtn"
+            onclick="changeVolume(0.1)">
+
+            🔊 +
+
+        </button>
+
+
+        <button
+            class="controlBtn"
+            onclick="toggleFullscreen()">
+
+            ⛶ Full Screen
+
+        </button>
+
     </div>
 
 </div>
 
+
 <!-- SONG LIST -->
 
-<div class="songs" id="songsBox">
+<div
+    class="songs"
+    id="songsBox">
 
     <div class="songList">
 
-        <button class="close" onclick="closeSongs()">✕ CLOSE</button>
+        <button
+            class="close"
+            onclick="closeSongs()">
+
+            ✕ CLOSE
+
+        </button>
+
 
         <div id="songList"></div>
 
@@ -317,34 +628,26 @@ h1{
 
 </div>
 
+
 <audio id="audio"></audio>
+
 
 <script>
 
+
 /* =========================
-   SONGS
+   36 SONGS
 ========================= */
 
-const songs = [
-    "song (1).mp3",
-    "song (2).mp3",
-    "song (3).mp3",
-    "song (4).mp3",
-    "song (5).mp3",
-    "song (6).mp3",
-    "song (7).mp3",
-    "song (8).mp3",
-    "song (9).mp3",
-    "song (10).mp3",
-    "song (11).mp3",
-    "song (12).mp3",
-    "song (13).mp3",
-    "song (14).mp3",
-    "song (15).mp3",
-    "song (16).mp3",
-    "song (17).mp3",
-    "song (18).mp3"
-];
+const songs = [];
+
+for(let i = 1; i <= 36; i++){
+
+    songs.push(
+        "song (" + i + ").mp3"
+    );
+
+}
 
 
 /* =========================
@@ -352,31 +655,59 @@ const songs = [
 ========================= */
 
 const backgrounds = [
+
     "background  (1).jpg",
     "background  (2).jpg",
     "background  (3).jpg",
     "background  (4).jpg",
     "background  (5).jpg"
+
 ];
+
 
 let currentSong = 0;
 
-const audio = document.getElementById("audio");
-const songName = document.getElementById("songName");
-const playBtn = document.getElementById("playBtn");
-const progressBar = document.getElementById("progressBar");
+
+const audio =
+    document.getElementById("audio");
+
+
+const songName =
+    document.getElementById("songName");
+
+
+const playBtn =
+    document.getElementById("playBtn");
+
+
+const progressBar =
+    document.getElementById("progressBar");
+
+
+const volumeControl =
+    document.getElementById("volumeControl");
+
+
+const muteBtn =
+    document.getElementById("muteBtn");
 
 
 /* =========================
-   BACKGROUND CHANGE
+   BACKGROUND
 ========================= */
 
 function changeBackground(){
 
-    const bg = backgrounds[currentSong % backgrounds.length];
+    const bg =
+        backgrounds[
+            currentSong %
+            backgrounds.length
+        ];
+
 
     document.body.style.backgroundImage =
         "url('" + bg + "')";
+
 }
 
 
@@ -386,12 +717,20 @@ function changeBackground(){
 
 function loadSong(){
 
-    audio.src = songs[currentSong];
+    audio.src =
+        songs[currentSong];
+
 
     songName.innerText =
-        "Song " + (currentSong + 1);
+        "Song " +
+        (currentSong + 1);
+
 
     changeBackground();
+
+
+    progressBar.style.width =
+        "0%";
 
 }
 
@@ -404,15 +743,25 @@ function togglePlay(){
 
     if(audio.paused){
 
-        audio.play();
+        audio.play().then(()=>{
 
-        playBtn.innerText = "❚❚";
+            playBtn.innerText =
+                "❚❚";
+
+        }).catch(()=>{
+
+            alert(
+                "Play करने के लिए फिर से Play दबाएँ।"
+            );
+
+        });
 
     }else{
 
         audio.pause();
 
-        playBtn.innerText = "▶";
+        playBtn.innerText =
+            "▶";
 
     }
 
@@ -420,89 +769,340 @@ function togglePlay(){
 
 
 /* =========================
-   NEXT SONG
+   NEXT
 ========================= */
 
 function nextSong(){
 
     currentSong++;
 
+
     if(currentSong >= songs.length){
+
         currentSong = 0;
+
     }
+
 
     loadSong();
 
-    audio.play();
 
-    playBtn.innerText = "❚❚";
+    audio.play().then(()=>{
+
+        playBtn.innerText =
+            "❚❚";
+
+    });
 
 }
 
 
 /* =========================
-   PREVIOUS SONG
+   PREVIOUS
 ========================= */
 
 function previousSong(){
 
     currentSong--;
 
+
     if(currentSong < 0){
-        currentSong = songs.length - 1;
+
+        currentSong =
+            songs.length - 1;
+
     }
+
 
     loadSong();
 
-    audio.play();
 
-    playBtn.innerText = "❚❚";
+    audio.play().then(()=>{
+
+        playBtn.innerText =
+            "❚❚";
+
+    });
 
 }
 
 
 /* =========================
-   AUTOMATIC NEXT SONG
+   AUTO NEXT
 ========================= */
 
-audio.addEventListener("ended", function(){
+audio.addEventListener(
+    "ended",
+    function(){
 
-    nextSong();
+        nextSong();
 
-});
+    }
+);
 
 
 /* =========================
-   PROGRESS BAR
+   PLAY / PAUSE STATE
 ========================= */
 
-audio.addEventListener("timeupdate", function(){
+audio.addEventListener(
+    "play",
+    function(){
 
-    if(audio.duration){
-
-        const percent =
-            (audio.currentTime / audio.duration) * 100;
-
-        progressBar.style.width =
-            percent + "%";
+        playBtn.innerText =
+            "❚❚";
 
     }
+);
 
-});
 
+audio.addEventListener(
+    "pause",
+    function(){
+
+        playBtn.innerText =
+            "▶";
+
+    }
+);
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+audio.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(audio.duration){
+
+            const percent =
+                (
+                    audio.currentTime /
+                    audio.duration
+                ) * 100;
+
+
+            progressBar.style.width =
+                percent + "%";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   SEEK
+========================= */
 
 function seek(event){
 
+    if(!audio.duration) return;
+
+
     const rect =
-        event.currentTarget.getBoundingClientRect();
+        event.currentTarget
+        .getBoundingClientRect();
+
 
     const percent =
-        (event.clientX - rect.left) / rect.width;
+        (
+            event.clientX -
+            rect.left
+        ) / rect.width;
+
 
     audio.currentTime =
-        percent * audio.duration;
+        percent *
+        audio.duration;
 
 }
+
+
+/* =========================
+   VOLUME
+========================= */
+
+function setVolume(value){
+
+    audio.volume =
+        Number(value);
+
+
+    volumeControl.value =
+        audio.volume;
+
+
+    if(audio.volume > 0){
+
+        audio.muted = false;
+
+        muteBtn.innerText =
+            "🔊 Mute";
+
+    }
+
+}
+
+
+/* =========================
+   VOLUME + / -
+========================= */
+
+function changeVolume(amount){
+
+    let volume =
+        audio.volume + amount;
+
+
+    volume =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                volume
+            )
+        );
+
+
+    setVolume(volume);
+
+}
+
+
+/* =========================
+   MUTE
+========================= */
+
+function toggleMute(){
+
+    audio.muted =
+        !audio.muted;
+
+
+    if(audio.muted){
+
+        muteBtn.innerText =
+            "🔇 Unmute";
+
+    }else{
+
+        muteBtn.innerText =
+            "🔊 Mute";
+
+    }
+
+}
+
+
+/* =========================
+   FULL SCREEN
+========================= */
+
+function toggleFullscreen(){
+
+    const player =
+        document.getElementById(
+            "playerBox"
+        );
+
+
+    if(!document.fullscreenElement){
+
+        if(player.requestFullscreen){
+
+            player.requestFullscreen();
+
+        }else if(
+            player.webkitRequestFullscreen
+        ){
+
+            player.webkitRequestFullscreen();
+
+        }
+
+    }else{
+
+        if(document.exitFullscreen){
+
+            document.exitFullscreen();
+
+        }
+
+    }
+
+}
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        /*
+           Space = Play/Pause
+        */
+
+        if(
+            event.code === "Space" &&
+            event.target.tagName !== "INPUT"
+        ){
+
+            event.preventDefault();
+
+            togglePlay();
+
+        }
+
+
+        /*
+           Right Arrow = Next
+        */
+
+        if(
+            event.code === "ArrowRight" &&
+            event.target.tagName !== "INPUT"
+        ){
+
+            nextSong();
+
+        }
+
+
+        /*
+           Left Arrow = Previous
+        */
+
+        if(
+            event.code === "ArrowLeft" &&
+            event.target.tagName !== "INPUT"
+        ){
+
+            previousSong();
+
+        }
+
+
+        /*
+           M = Mute
+        */
+
+        if(
+            event.key.toLowerCase() === "m" &&
+            event.target.tagName !== "INPUT"
+        ){
+
+            toggleMute();
+
+        }
+
+    }
+);
 
 
 /* =========================
@@ -512,58 +1112,97 @@ function seek(event){
 function createSongList(){
 
     const list =
-        document.getElementById("songList");
+        document.getElementById(
+            "songList"
+        );
+
 
     list.innerHTML = "";
 
-    songs.forEach((song,index)=>{
 
-        const item =
-            document.createElement("div");
+    songs.forEach(
+        (song,index)=>{
 
-        item.className = "songItem";
+            const item =
+                document.createElement(
+                    "div"
+                );
 
-        item.innerHTML = `
-            <span>🎵 Song ${index + 1}</span>
-            <button onclick="selectSong(${index})">
-                ▶ Play
-            </button>
-        `;
 
-        list.appendChild(item);
+            item.className =
+                "songItem";
 
-    });
+
+            item.innerHTML = `
+
+                <span>
+                    🎵 Song ${index + 1}
+                </span>
+
+                <button
+                    onclick="selectSong(${index})">
+
+                    ▶ Play
+
+                </button>
+
+            `;
+
+
+            list.appendChild(item);
+
+        }
+    );
 
 }
 
 
+/* =========================
+   SELECT SONG
+========================= */
+
 function selectSong(index){
 
-    currentSong = index;
+    currentSong =
+        index;
+
 
     loadSong();
 
-    audio.play();
 
-    playBtn.innerText = "❚❚";
+    audio.play().then(()=>{
+
+        playBtn.innerText =
+            "❚❚";
+
+    });
+
 
     closeSongs();
 
 }
 
 
+/* =========================
+   SONG WINDOW
+========================= */
+
 function openSongs(){
 
-    document.getElementById("songsBox")
-    .style.display = "block";
+    document
+        .getElementById("songsBox")
+        .style.display =
+        "block";
 
 }
 
 
 function closeSongs(){
 
-    document.getElementById("songsBox")
-    .style.display = "none";
+    document
+        .getElementById("songsBox")
+        .style.display =
+        "none";
 
 }
 
@@ -574,28 +1213,60 @@ function closeSongs(){
 
 function updateClock(){
 
-    const now = new Date();
+    const now =
+        new Date();
 
-    let h = now.getHours();
+
+    let h =
+        now.getHours();
+
 
     const m =
-        String(now.getMinutes()).padStart(2,"0");
+        String(
+            now.getMinutes()
+        ).padStart(2,"0");
+
 
     const s =
-        String(now.getSeconds()).padStart(2,"0");
+        String(
+            now.getSeconds()
+        ).padStart(2,"0");
+
 
     const ampm =
-        h >= 12 ? "pm" : "am";
+        h >= 12
+        ? "pm"
+        : "am";
 
-    h = h % 12 || 12;
 
-    document.getElementById("clock").innerText =
-        String(h).padStart(2,"0") +
-        ":" + m +
-        ":" + s +
-        " " + ampm;
+    h =
+        h % 12 || 12;
 
-    document.getElementById("date").innerText =
+
+    document
+        .getElementById("clock")
+        .innerText =
+
+        String(h)
+        .padStart(2,"0")
+
+        + ":" +
+
+        m
+
+        + ":" +
+
+        s
+
+        + " " +
+
+        ampm;
+
+
+    document
+        .getElementById("date")
+        .innerText =
+
         now.toLocaleDateString(
             "en-IN",
             {
@@ -608,7 +1279,12 @@ function updateClock(){
 
 }
 
-setInterval(updateClock,1000);
+
+setInterval(
+    updateClock,
+    1000
+);
+
 
 updateClock();
 
@@ -620,6 +1296,7 @@ updateClock();
 createSongList();
 
 loadSong();
+
 
 </script>
 
