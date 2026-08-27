@@ -9,68 +9,88 @@
 
 <style>
 
+/* =========================
+   BASIC
+========================= */
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
 }
 
-html,
-body{
+html,body{
     width:100%;
     min-height:100%;
 }
 
 body{
     min-height:100vh;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     color:white;
     overflow-x:hidden;
     background:#111;
 }
 
+
 /* =========================
-   BACKGROUND IMAGE
+   BACKGROUND
 ========================= */
 
 #backgroundImage{
+
     position:fixed;
+
     inset:0;
+
     width:100%;
     height:100%;
+
     object-fit:cover;
-    object-position:center;
+
     z-index:0;
+
     opacity:1;
+
     transition:opacity .7s ease;
 }
 
-/* DARK OVERLAY */
+.backgroundOverlay{
 
-#backgroundDark{
     position:fixed;
+
     inset:0;
-    z-index:1;
-    pointer-events:none;
 
     background:
         linear-gradient(
-            rgba(0,0,0,.25),
-            rgba(0,0,0,.60)
+            rgba(0,0,0,.40),
+            rgba(0,0,0,.68)
         );
+
+    z-index:1;
+
+    pointer-events:none;
 }
+
 
 /* =========================
    EFFECTS
 ========================= */
 
 #effects{
+
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     overflow:hidden;
+
     z-index:2;
+
     opacity:0;
+
     transition:opacity .5s;
 }
 
@@ -78,17 +98,22 @@ body{
     opacity:1;
 }
 
+
 .light{
+
     position:absolute;
+
     width:250px;
     height:250px;
+
     border-radius:50%;
-    filter:blur(55px);
+
+    filter:blur(50px);
+
     opacity:.55;
 
     animation:
-        moveLight
-        5s infinite alternate ease-in-out;
+        moveLight 5s infinite alternate ease-in-out;
 }
 
 .light.one{
@@ -114,26 +139,25 @@ body{
 @keyframes moveLight{
 
     0%{
-        transform:
-            translate(0,0)
-            scale(.8);
+        transform:translate(0,0) scale(.8);
     }
 
     100%{
-        transform:
-            translate(150px,-80px)
-            scale(1.3);
+        transform:translate(150px,-80px) scale(1.3);
     }
 
 }
 
-/* PARTICLES */
 
 .particle{
+
     position:absolute;
+
     width:5px;
     height:5px;
+
     background:white;
+
     border-radius:50%;
 
     box-shadow:
@@ -141,9 +165,7 @@ body{
         0 0 20px white;
 
     animation:
-        particleMove
-        linear
-        infinite;
+        particleMove linear infinite;
 }
 
 @keyframes particleMove{
@@ -152,6 +174,7 @@ body{
         transform:
             translateY(110vh)
             rotate(0deg);
+
         opacity:0;
     }
 
@@ -167,458 +190,655 @@ body{
         transform:
             translateY(-20vh)
             rotate(360deg);
+
         opacity:0;
     }
 
 }
+
 
 /* =========================
    PAGE
 ========================= */
 
 .page{
+
     position:relative;
+
     z-index:5;
+
     min-height:100vh;
 }
+
 
 /* =========================
    TOP
 ========================= */
 
 .top{
+
     width:100%;
+
     padding:22px 30px;
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:flex-start;
+
     gap:20px;
 }
 
-.clock{
-    font-size:25px;
-    font-weight:bold;
-    letter-spacing:1px;
 
-    text-shadow:
-        0 3px 15px black;
+.clock{
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
 }
+
 
 .date{
-    margin-top:5px;
-    font-size:11px;
-    letter-spacing:2px;
-    opacity:.8;
 
-    text-shadow:
-        0 2px 10px black;
+    margin-top:5px;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    opacity:.75;
 }
 
+
 /* =========================
-   TOP BUTTONS
+   SOCIAL BUTTONS
 ========================= */
 
 .topButtons{
+
     display:flex;
-    gap:10px;
+
+    gap:12px;
+
+    align-items:center;
 }
 
-.topBtn{
-    border:
-        1px solid
-        rgba(255,255,255,.3);
 
-    background:
-        rgba(0,0,0,.45);
+.socialBtn{
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.55);
+
+    background:rgba(0,0,0,.25);
 
     color:white;
 
-    padding:
-        11px 16px;
+    display:flex;
 
-    border-radius:25px;
-    cursor:pointer;
+    align-items:center;
 
-    font-size:12px;
-    font-weight:bold;
+    justify-content:center;
 
-    backdrop-filter:
-        blur(12px);
+    text-decoration:none;
+
+    backdrop-filter:blur(12px);
 
     transition:.25s;
+
+    font-size:22px;
+
+    font-weight:bold;
 }
 
-.topBtn:hover{
-    background:
-        rgba(255,255,255,.18);
 
-    transform:
-        translateY(-2px);
+.socialBtn:hover{
+
+    background:rgba(255,255,255,.18);
+
+    transform:translateY(-3px) scale(1.05);
+
+    border-color:white;
 }
 
-.specialBtn{
-    background:
-        linear-gradient(
-            135deg,
-            #7c3aed,
-            #ec4899
-        );
 
-    border:none;
+/* INSTAGRAM */
+
+.instagramIcon{
+
+    width:22px;
+    height:22px;
+
+    border:2px solid white;
+
+    border-radius:6px;
+
+    position:relative;
 }
+
+
+.instagramIcon:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    border:2px solid white;
+
+    border-radius:50%;
+
+    left:5px;
+    top:5px;
+}
+
+
+.instagramIcon:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    background:white;
+
+    border-radius:50%;
+
+    right:2px;
+    top:2px;
+}
+
+
+/* YOUTUBE */
+
+.youtubeIcon{
+
+    width:25px;
+    height:18px;
+
+    border-radius:5px;
+
+    background:white;
+
+    position:relative;
+}
+
+
+.youtubeIcon:after{
+
+    content:"";
+
+    position:absolute;
+
+    left:10px;
+    top:5px;
+
+    border-left:8px solid #111;
+
+    border-top:4px solid transparent;
+
+    border-bottom:4px solid transparent;
+}
+
+
+/* WHATSAPP */
+
+.whatsappIcon{
+
+    width:23px;
+    height:23px;
+
+    border:2px solid white;
+
+    border-radius:50%;
+
+    position:relative;
+
+    font-size:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
 
 /* =========================
    MAIN
 ========================= */
 
 .main{
-    min-height:
-        calc(100vh - 100px);
+
+    min-height:calc(100vh - 100px);
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
 
-    padding:
-        30px 20px 180px;
+    padding:30px 20px 180px;
 }
 
-.badge{
-    padding:
-        10px 25px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.3);
+.badge{
+
+    padding:10px 25px;
+
+    border:1px solid rgba(255,255,255,.30);
 
     border-radius:30px;
 
-    background:
-        rgba(0,0,0,.3);
+    background:rgba(0,0,0,.25);
 
-    backdrop-filter:
-        blur(10px);
+    backdrop-filter:blur(10px);
 
     font-size:11px;
+
     letter-spacing:4px;
+
     margin-bottom:30px;
 }
 
-h1{
-    font-family:Georgia, serif;
 
-    font-size:
-        clamp(50px,9vw,120px);
+h1{
+
+    font-family:Georgia,serif;
+
+    font-size:clamp(50px,9vw,120px);
 
     line-height:.88;
+
     letter-spacing:-4px;
 
     text-shadow:
-        0 5px 30px
-        rgba(0,0,0,.9);
+        0 5px 30px rgba(0,0,0,.8);
 }
 
+
 .subtitle{
+
     margin-top:28px;
+
     font-size:11px;
+
     letter-spacing:6px;
-    opacity:.8;
+
+    opacity:.75;
 }
+
 
 /* =========================
    PLAYER
 ========================= */
 
 .player{
+
     position:fixed;
 
     left:50%;
+
     bottom:15px;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
-    width:
-        min(1100px,95%);
+    width:min(1100px,95%);
 
-    padding:
-        15px 20px;
+    padding:15px 20px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.25);
 
     border-radius:24px;
 
-    background:
-        rgba(10,10,10,.72);
+    background:rgba(10,10,10,.70);
 
-    backdrop-filter:
-        blur(20px);
+    backdrop-filter:blur(20px);
 
     box-shadow:
-        0 10px 40px
-        rgba(0,0,0,.65);
+        0 10px 40px rgba(0,0,0,.60);
 
     z-index:100;
 }
 
+
 .playerRow{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
+    width:100%;
 }
 
+
 .playBtn{
+
     width:52px;
     height:52px;
+
     flex-shrink:0;
 
-    border:
-        2px solid white;
+    border:2px solid white;
 
     border-radius:50%;
 
-    background:
-        rgba(255,255,255,.06);
+    background:rgba(255,255,255,.06);
 
     color:white;
 
     font-size:19px;
+
     cursor:pointer;
 }
 
+
 .playBtn:hover{
-    background:
-        rgba(255,255,255,.18);
+
+    background:rgba(255,255,255,.18);
 }
 
+
 .songInfo{
+
     flex:1;
+
     min-width:0;
 }
 
+
 .nowPlaying{
+
     font-size:9px;
+
     letter-spacing:3px;
+
     opacity:.55;
+
     margin-bottom:4px;
 }
 
+
 .songTitle{
+
     font-size:16px;
+
     font-weight:bold;
 
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
 }
 
+
 .navButtons{
+
     display:flex;
+
     gap:7px;
 }
 
+
 .navBtn{
+
     width:42px;
     height:42px;
 
     border-radius:50%;
 
-    border:
-        1px solid
-        rgba(255,255,255,.3);
+    border:1px solid rgba(255,255,255,.30);
 
-    background:
-        rgba(255,255,255,.07);
+    background:rgba(255,255,255,.07);
 
     color:white;
 
     font-size:22px;
+
     cursor:pointer;
 }
 
+
 .navBtn:hover{
-    background:
-        rgba(255,255,255,.2);
+
+    background:rgba(255,255,255,.20);
 }
+
 
 /* =========================
    VOLUME
 ========================= */
 
 .volumeControls{
+
     display:flex;
+
     align-items:center;
+
     gap:6px;
+
+    margin-left:5px;
 }
 
+
 .volumeBtn{
+
     height:36px;
+
     min-width:42px;
 
-    padding:
-        0 9px;
+    padding:0 9px;
 
     border-radius:20px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.28);
+    border:1px solid rgba(255,255,255,.28);
 
-    background:
-        rgba(255,255,255,.07);
+    background:rgba(255,255,255,.07);
 
     color:white;
+
     cursor:pointer;
+
+    font-size:12px;
 }
 
+
+.volumeBtn:hover{
+
+    background:rgba(255,255,255,.18);
+}
+
+
 .volumeBox{
+
     height:36px;
 
-    padding:
-        0 10px;
+    padding:0 10px;
 
     display:flex;
+
     align-items:center;
+
     gap:7px;
 
     border-radius:20px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.25);
 
-    background:
-        rgba(0,0,0,.3);
+    background:rgba(0,0,0,.30);
 }
+
 
 .volumeRange{
+
     width:100px;
+
+    height:5px;
+
     cursor:pointer;
+
+    accent-color:white;
 }
+
 
 /* =========================
    PROGRESS
 ========================= */
 
 .progress{
+
     width:100%;
+
     height:6px;
 
     margin-top:13px;
 
-    background:
-        rgba(255,255,255,.25);
+    background:rgba(255,255,255,.25);
 
     border-radius:10px;
+
     overflow:hidden;
+
     cursor:pointer;
 }
 
+
 .progressBar{
+
     width:0%;
+
     height:100%;
+
     background:white;
+
+    border-radius:10px;
 }
+
 
 /* =========================
    SONG WINDOW
 ========================= */
 
 .songWindow{
+
     display:none;
 
     position:fixed;
+
     inset:0;
 
     z-index:500;
 
-    padding:
-        35px 20px;
+    padding:35px 20px;
 
     overflow-y:auto;
 
-    background:
-        rgba(0,0,0,.94);
+    background:rgba(0,0,0,.92);
 
-    backdrop-filter:
-        blur(15px);
+    backdrop-filter:blur(15px);
 }
 
+
 .songList{
-    width:
-        min(700px,100%);
+
+    width:min(700px,100%);
 
     margin:auto;
 }
 
+
 .closeBtn{
+
     display:block;
 
-    margin:
-        0 auto 20px;
+    margin:0 auto 20px;
 
-    padding:
-        10px 25px;
+    padding:10px 25px;
 
     border:0;
+
     border-radius:25px;
 
     background:white;
+
     color:black;
 
     font-weight:bold;
+
     cursor:pointer;
 }
 
+
 .songItem{
+
     display:flex;
 
     align-items:center;
+
     justify-content:space-between;
 
     gap:10px;
 
-    padding:
-        13px 17px;
+    padding:13px 17px;
 
     margin:7px 0;
 
     border-radius:14px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.12);
 
-    background:
-        rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 }
+
 
 .songItem.active{
-    background:
-        rgba(255,255,255,.22);
+
+    background:rgba(255,255,255,.22);
+
+    border-color:rgba(255,255,255,.40);
 }
 
+
 .songItem span{
+
     overflow:hidden;
+
     white-space:nowrap;
+
     text-overflow:ellipsis;
 }
 
+
 .songPlay{
+
+    flex-shrink:0;
+
     border:0;
+
     border-radius:20px;
 
-    padding:
-        8px 18px;
+    padding:8px 18px;
 
     cursor:pointer;
 }
+
 
 /* =========================
    MOBILE
@@ -627,80 +847,172 @@ h1{
 @media(max-width:700px){
 
     .top{
+
         padding:15px;
     }
 
     .clock{
+
         font-size:18px;
     }
 
     .date{
+
         font-size:8px;
+
+        letter-spacing:1px;
     }
 
-    .topBtn{
-        padding:
-            9px 10px;
+    .socialBtn{
 
-        font-size:9px;
+        width:38px;
+        height:38px;
+
+        font-size:17px;
+    }
+
+    .topButtons{
+
+        gap:5px;
     }
 
     h1{
+
         font-size:50px;
+
         letter-spacing:-2px;
     }
 
     .badge{
+
         font-size:8px;
+
         letter-spacing:2px;
     }
 
     .subtitle{
+
         font-size:8px;
+
         letter-spacing:3px;
     }
 
     .player{
+
         width:97%;
+
         padding:12px;
     }
 
     .playerRow{
+
         gap:7px;
     }
 
     .playBtn{
+
         width:44px;
+
         height:44px;
     }
 
     .songTitle{
+
         font-size:13px;
     }
 
     .navBtn{
+
         width:36px;
+
         height:36px;
+
+        font-size:20px;
+    }
+
+    .volumeBtn{
+
+        min-width:34px;
+
+        padding:0 6px;
+
+        font-size:10px;
+    }
+
+    .volumeBox{
+
+        padding:0 7px;
     }
 
     .volumeRange{
+
         width:65px;
     }
 
 }
 
+
 @media(max-width:450px){
 
     .volumeBox{
+
         display:none;
+    }
+
+    .volumeControls{
+
+        gap:3px;
+    }
+
+    .volumeBtn{
+
+        min-width:32px;
+
+        padding:0 5px;
+    }
+
+    .main{
+
+        padding-bottom:160px;
+    }
+
+    .socialBtn{
+
+        width:32px;
+        height:32px;
+
+        font-size:14px;
+    }
+
+    .instagramIcon{
+
+        width:16px;
+        height:16px;
+    }
+
+    .youtubeIcon{
+
+        width:19px;
+        height:14px;
+    }
+
+    .whatsappIcon{
+
+        width:17px;
+        height:17px;
+
+        font-size:10px;
     }
 
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- =========================
      BACKGROUND
@@ -712,25 +1024,33 @@ h1{
     alt="Background"
 >
 
-<div id="backgroundDark"></div>
+<div class="backgroundOverlay"></div>
 
-<!-- EFFECTS -->
+
+<!-- =========================
+     EFFECTS
+========================= -->
 
 <div id="effects">
 
     <div class="light one"></div>
+
     <div class="light two"></div>
+
     <div class="light three"></div>
 
 </div>
 
+
 <div class="page">
+
 
 <!-- =========================
      TOP
 ========================= -->
 
 <header class="top">
+
 
     <div>
 
@@ -742,6 +1062,7 @@ h1{
 
         </div>
 
+
         <div
             class="date"
             id="liveDate">
@@ -750,27 +1071,71 @@ h1{
 
     </div>
 
+
+    <!-- SOCIAL BUTTONS -->
+
     <div class="topButtons">
 
-        <button
-            class="topBtn"
-            onclick="openSongs()">
 
-            🎵 ALL SONGS
+        <!-- FACEBOOK -->
 
-        </button>
+        <a
+            class="socialBtn"
+            href="https://www.facebook.com/"
+            target="_blank"
+            title="Facebook">
 
-        <button
-            class="topBtn specialBtn"
-            onclick="startSpecialEffect()">
+            f
 
-            ✨ SPECIAL
+        </a>
 
-        </button>
+
+        <!-- INSTAGRAM -->
+
+        <a
+            class="socialBtn"
+            href="https://www.instagram.com/"
+            target="_blank"
+            title="Instagram">
+
+            <span class="instagramIcon"></span>
+
+        </a>
+
+
+        <!-- YOUTUBE -->
+
+        <a
+            class="socialBtn"
+            href="https://www.youtube.com/"
+            target="_blank"
+            title="YouTube">
+
+            <span class="youtubeIcon"></span>
+
+        </a>
+
+
+        <!-- WHATSAPP -->
+
+        <a
+            class="socialBtn"
+            href="https://wa.me/"
+            target="_blank"
+            title="WhatsApp">
+
+            <span class="whatsappIcon">
+
+                ☎
+
+            </span>
+
+        </a>
 
     </div>
 
 </header>
+
 
 <!-- =========================
      MAIN
@@ -778,18 +1143,22 @@ h1{
 
 <main class="main">
 
+
     <div class="badge">
 
         📸 U T T A M &nbsp; P H O T O G R A P H Y
 
     </div>
 
+
     <h1>
 
         UTTAM<br>
+
         PHOTOGRAPHY
 
     </h1>
+
 
     <div class="subtitle">
 
@@ -799,13 +1168,18 @@ h1{
 
 </main>
 
+
 <!-- =========================
      PLAYER
 ========================= -->
 
-<div class="player">
+<div
+    class="player"
+    id="player">
+
 
     <div class="playerRow">
+
 
         <button
             class="playBtn"
@@ -816,11 +1190,16 @@ h1{
 
         </button>
 
+
         <div class="songInfo">
 
+
             <div class="nowPlaying">
+
                 NOW PLAYING
+
             </div>
+
 
             <div
                 class="songTitle"
@@ -832,7 +1211,9 @@ h1{
 
         </div>
 
+
         <div class="navButtons">
+
 
             <button
                 class="navBtn"
@@ -841,6 +1222,7 @@ h1{
                 ‹
 
             </button>
+
 
             <button
                 class="navBtn"
@@ -852,7 +1234,11 @@ h1{
 
         </div>
 
+
+        <!-- VOLUME -->
+
         <div class="volumeControls">
+
 
             <button
                 class="volumeBtn"
@@ -863,6 +1249,7 @@ h1{
 
             </button>
 
+
             <button
                 class="volumeBtn"
                 onclick="volumeDown()">
@@ -871,22 +1258,24 @@ h1{
 
             </button>
 
+
             <div class="volumeBox">
 
                 🔊
 
                 <input
+                    type="range"
                     class="volumeRange"
                     id="volumeRange"
-                    type="range"
                     min="0"
                     max="1"
-                    step=".01"
+                    step="0.01"
                     value="1"
                     oninput="setVolume(this.value)"
                 >
 
             </div>
+
 
             <button
                 class="volumeBtn"
@@ -900,6 +1289,7 @@ h1{
 
     </div>
 
+
     <div
         class="progress"
         id="progress">
@@ -907,11 +1297,13 @@ h1{
         <div
             class="progressBar"
             id="progressBar">
+
         </div>
 
     </div>
 
 </div>
+
 
 <!-- =========================
      SONG WINDOW
@@ -921,7 +1313,9 @@ h1{
     class="songWindow"
     id="songWindow">
 
+
     <div class="songList">
+
 
         <button
             class="closeBtn"
@@ -931,36 +1325,29 @@ h1{
 
         </button>
 
+
         <div id="songList"></div>
 
     </div>
 
 </div>
 
+
 </div>
 
-<audio
-    id="audio"
-    preload="metadata">
-</audio>
+
+<audio id="audio"></audio>
+
 
 <script>
 
-/* =====================================================
-   BACKGROUNDS
-===================================================== */
 
-/*
-   IMPORTANT:
-   GitHub files ke exact naam:
-   bg1. jpg
-   bg2. jpg
-   bg3. jpg
-   bg4. jpg
-   bg5. jpg
-*/
+/* =========================
+   30 BACKGROUNDS
+========================= */
 
 const backgrounds = [
+
     "BG (1).jpg",
     "BG (2).jpg",
     "BG (3).jpg",
@@ -991,109 +1378,112 @@ const backgrounds = [
     "BG (28).jpg",
     "BG (29).jpg",
     "BG (30).jpg"
+
 ];
-let currentBackground = 0;
 
-const backgroundImage =
-    document.getElementById(
-        "backgroundImage"
-    );
 
-/* PRELOAD */
-
-backgrounds.forEach(function(file){
-
-    const img = new Image();
-
-    img.src = file;
-
-});
-
-/* CHANGE BACKGROUND */
-
-function changeBackground(){
-
-    currentBackground++;
-
-    if(
-        currentBackground >=
-        backgrounds.length
-    ){
-
-        currentBackground = 0;
-
-    }
-
-    backgroundImage.style.opacity = "0";
-
-    setTimeout(function(){
-
-        backgroundImage.src =
-            backgrounds[currentBackground];
-
-        backgroundImage.style.opacity =
-            "1";
-
-    },300);
-
-}
-
-/* =====================================================
-   SONGS
-===================================================== */
+/* =========================
+   36 SONGS
+========================= */
 
 const songs = [];
 
-for(
-    let i = 1;
-    i <= 36;
-    i++
-){
+for(let i = 1; i <= 36; i++){
 
     songs.push(
-        "song%20(" + i + ").mp3"
+        "song (" + i + ").mp3"
     );
 
 }
+
+
+/* =========================
+   VARIABLES
+========================= */
 
 let currentSong = 0;
 
 const audio =
-    document.getElementById(
-        "audio"
-    );
+    document.getElementById("audio");
 
 const playBtn =
-    document.getElementById(
-        "playBtn"
-    );
+    document.getElementById("playBtn");
 
 const songTitle =
-    document.getElementById(
-        "songTitle"
-    );
+    document.getElementById("songTitle");
 
 const progress =
-    document.getElementById(
-        "progress"
-    );
+    document.getElementById("progress");
 
 const progressBar =
-    document.getElementById(
-        "progressBar"
-    );
+    document.getElementById("progressBar");
 
 const volumeRange =
-    document.getElementById(
-        "volumeRange"
-    );
+    document.getElementById("volumeRange");
 
 const muteBtn =
-    document.getElementById(
-        "muteBtn"
-    );
+    document.getElementById("muteBtn");
 
-/* LOAD SONG */
+const backgroundImage =
+    document.getElementById("backgroundImage");
+
+
+/* =========================
+   CHANGE BACKGROUND
+   SONG KE SAATH
+========================= */
+
+function changeBackground(){
+
+    const backgroundIndex =
+        currentSong % backgrounds.length;
+
+    const newBackground =
+        backgrounds[backgroundIndex];
+
+
+    backgroundImage.style.opacity = "0";
+
+
+    const testImage =
+        new Image();
+
+
+    testImage.onload =
+        function(){
+
+            backgroundImage.src =
+                newBackground;
+
+            backgroundImage.style.opacity =
+                "1";
+
+        };
+
+
+    testImage.onerror =
+        function(){
+
+            console.log(
+                "Background नहीं मिला:",
+                newBackground
+            );
+
+            backgroundImage.style.opacity =
+                "1";
+
+        };
+
+
+    testImage.src =
+        newBackground;
+
+}
+
+
+/* =========================
+   LOAD SONG
+========================= */
 
 function loadSong(){
 
@@ -1102,40 +1492,68 @@ function loadSong(){
 
     audio.load();
 
+
     songTitle.innerText =
-        "Song " +
-        (currentSong + 1);
+        "Song " + (currentSong + 1);
+
 
     progressBar.style.width =
         "0%";
+
+
+    changeBackground();
+
 
     updateSongList();
 
 }
 
-/* PLAY */
+
+/* =========================
+   PLAY / PAUSE
+========================= */
 
 function togglePlay(){
 
     if(audio.paused){
 
         audio.play()
-        .catch(function(){});
+        .then(function(){
+
+            playBtn.innerText =
+                "❚❚";
+
+        })
+        .catch(function(error){
+
+            console.log(
+                "Audio play नहीं हो पाया:",
+                error
+            );
+
+        });
 
     }
     else{
 
         audio.pause();
 
+        playBtn.innerText =
+            "▶";
+
     }
 
 }
 
-/* NEXT */
+
+/* =========================
+   NEXT
+========================= */
 
 function nextSong(){
 
     currentSong++;
+
 
     if(
         currentSong >=
@@ -1146,18 +1564,35 @@ function nextSong(){
 
     }
 
+
     loadSong();
 
+
     audio.play()
-    .catch(function(){});
+    .then(function(){
+
+        playBtn.innerText =
+            "❚❚";
+
+    })
+    .catch(function(){
+
+        playBtn.innerText =
+            "▶";
+
+    });
 
 }
 
-/* PREVIOUS */
+
+/* =========================
+   PREVIOUS
+========================= */
 
 function previousSong(){
 
     currentSong--;
+
 
     if(currentSong < 0){
 
@@ -1166,21 +1601,44 @@ function previousSong(){
 
     }
 
+
     loadSong();
 
+
     audio.play()
-    .catch(function(){});
+    .then(function(){
+
+        playBtn.innerText =
+            "❚❚";
+
+    })
+    .catch(function(){
+
+        playBtn.innerText =
+            "▶";
+
+    });
 
 }
 
-/* AUTO NEXT */
+
+/* =========================
+   AUTO NEXT
+========================= */
 
 audio.addEventListener(
     "ended",
-    nextSong
+    function(){
+
+        nextSong();
+
+    }
 );
 
-/* PLAY ICON */
+
+/* =========================
+   PLAY / PAUSE ICON
+========================= */
 
 audio.addEventListener(
     "play",
@@ -1192,6 +1650,7 @@ audio.addEventListener(
     }
 );
 
+
 audio.addEventListener(
     "pause",
     function(){
@@ -1202,7 +1661,10 @@ audio.addEventListener(
     }
 );
 
-/* PROGRESS */
+
+/* =========================
+   PROGRESS
+========================= */
 
 audio.addEventListener(
     "timeupdate",
@@ -1213,38 +1675,50 @@ audio.addEventListener(
             isFinite(audio.duration)
         ){
 
-            progressBar.style.width =
+            const percent =
                 (
                     audio.currentTime /
-                    audio.duration *
-                    100
-                ) +
-                "%";
+                    audio.duration
+                ) * 100;
+
+
+            progressBar.style.width =
+                percent + "%";
 
         }
 
     }
 );
 
+
+/* =========================
+   PROGRESS CLICK
+========================= */
+
 progress.addEventListener(
     "click",
     function(event){
 
-        if(!audio.duration){
+        if(
+            !audio.duration ||
+            !isFinite(audio.duration)
+        ){
 
             return;
 
         }
 
+
         const rect =
             progress.getBoundingClientRect();
+
 
         const percent =
             (
                 event.clientX -
                 rect.left
-            ) /
-            rect.width;
+            ) / rect.width;
+
 
         audio.currentTime =
             percent *
@@ -1253,64 +1727,96 @@ progress.addEventListener(
     }
 );
 
-/* =====================================================
+
+/* =========================
    VOLUME
-===================================================== */
+========================= */
 
 function setVolume(value){
 
     audio.volume =
         Number(value);
 
+
     volumeRange.value =
         audio.volume;
 
-    audio.muted = false;
 
-    muteBtn.innerText =
-        audio.volume === 0
-        ? "🔇"
-        : "🔊";
+    if(audio.volume > 0){
+
+        audio.muted =
+            false;
+
+
+        muteBtn.innerText =
+            "🔊";
+
+    }
 
 }
+
 
 function volumeUp(){
 
-    setVolume(
-        Math.min(
-            1,
-            audio.volume + .1
-        )
-    );
+    let value =
+        audio.volume + 0.1;
+
+
+    if(value > 1){
+
+        value = 1;
+
+    }
+
+
+    setVolume(value);
 
 }
+
 
 function volumeDown(){
 
-    setVolume(
-        Math.max(
-            0,
-            audio.volume - .1
-        )
-    );
+    let value =
+        audio.volume - 0.1;
+
+
+    if(value < 0){
+
+        value = 0;
+
+    }
+
+
+    setVolume(value);
 
 }
+
 
 function toggleMute(){
 
     audio.muted =
         !audio.muted;
 
-    muteBtn.innerText =
-        audio.muted
-        ? "🔇"
-        : "🔊";
+
+    if(audio.muted){
+
+        muteBtn.innerText =
+            "🔇";
+
+    }
+    else{
+
+        muteBtn.innerText =
+            "🔊";
+
+    }
 
 }
 
-/* =====================================================
+
+/* =========================
    SONG LIST
-===================================================== */
+========================= */
 
 function createSongList(){
 
@@ -1319,7 +1825,10 @@ function createSongList(){
             "songList"
         );
 
-    list.innerHTML = "";
+
+    list.innerHTML =
+        "";
+
 
     songs.forEach(
         function(song,index){
@@ -1329,8 +1838,10 @@ function createSongList(){
                     "div"
                 );
 
+
             item.className =
                 "songItem";
+
 
             item.innerHTML = `
 
@@ -1348,6 +1859,7 @@ function createSongList(){
 
             `;
 
+
             list.appendChild(item);
 
         }
@@ -1355,75 +1867,99 @@ function createSongList(){
 
 }
 
+
 function updateSongList(){
 
-    document
-        .querySelectorAll(
+    const items =
+        document.querySelectorAll(
             ".songItem"
-        )
-        .forEach(
-            function(item,index){
+        );
 
-                item.classList.toggle(
-                    "active",
-                    index === currentSong
+
+    items.forEach(
+        function(item,index){
+
+            if(index === currentSong){
+
+                item.classList.add(
+                    "active"
                 );
 
             }
-        );
+            else{
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
 
 }
+
 
 function selectSong(index){
 
     currentSong =
         index;
 
+
     loadSong();
 
+
     audio.play()
-        .catch(function(){});
+    .then(function(){
+
+        playBtn.innerText =
+            "❚❚";
+
+    })
+    .catch(function(){
+
+        playBtn.innerText =
+            "▶";
+
+    });
+
 
     closeSongs();
 
 }
 
+
 function openSongs(){
 
     document
-        .getElementById(
-            "songWindow"
-        )
+        .getElementById("songWindow")
         .style.display =
         "block";
 
 }
 
+
 function closeSongs(){
 
     document
-        .getElementById(
-            "songWindow"
-        )
+        .getElementById("songWindow")
         .style.display =
         "none";
 
 }
 
-/* =====================================================
-   DATE / TIME
-===================================================== */
+
+/* =========================
+   DATE & TIME
+========================= */
 
 function updateDateTime(){
 
     const now =
         new Date();
 
-    document
-        .getElementById(
-            "liveTime"
-        )
-        .innerText =
+
+    const time =
         now.toLocaleTimeString(
             "hi-IN",
             {
@@ -1434,11 +1970,8 @@ function updateDateTime(){
             }
         );
 
-    document
-        .getElementById(
-            "liveDate"
-        )
-        .innerText =
+
+    const date =
         now.toLocaleDateString(
             "hi-IN",
             {
@@ -1449,35 +1982,41 @@ function updateDateTime(){
             }
         );
 
+
+    document
+        .getElementById("liveTime")
+        .innerText =
+        time;
+
+
+    document
+        .getElementById("liveDate")
+        .innerText =
+        date;
+
 }
 
+
 updateDateTime();
+
 
 setInterval(
     updateDateTime,
     1000
 );
 
-/* =====================================================
+
+/* =========================
    KEYBOARD
-===================================================== */
+========================= */
 
 document.addEventListener(
     "keydown",
     function(event){
 
         if(
-            event.target.tagName ===
-            "INPUT"
-        ){
-
-            return;
-
-        }
-
-        if(
-            event.code ===
-            "Space"
+            event.code === "Space" &&
+            event.target.tagName !== "INPUT"
         ){
 
             event.preventDefault();
@@ -1486,18 +2025,20 @@ document.addEventListener(
 
         }
 
+
         if(
-            event.code ===
-            "ArrowRight"
+            event.code === "ArrowRight" &&
+            event.target.tagName !== "INPUT"
         ){
 
             nextSong();
 
         }
 
+
         if(
-            event.code ===
-            "ArrowLeft"
+            event.code === "ArrowLeft" &&
+            event.target.tagName !== "INPUT"
         ){
 
             previousSong();
@@ -1507,11 +2048,13 @@ document.addEventListener(
     }
 );
 
-/* =====================================================
+
+/* =========================
    SPECIAL EFFECT
-===================================================== */
+========================= */
 
 let specialTimer = null;
+
 
 function createParticles(){
 
@@ -1519,6 +2062,7 @@ function createParticles(){
         document.getElementById(
             "effects"
         );
+
 
     effects
         .querySelectorAll(
@@ -1532,6 +2076,7 @@ function createParticles(){
             }
         );
 
+
     for(
         let i = 0;
         i < 45;
@@ -1543,36 +2088,30 @@ function createParticles(){
                 "div"
             );
 
+
         particle.className =
             "particle";
 
+
         particle.style.left =
-            Math.random() *
-            100 +
-            "%";
+            Math.random() * 100 + "%";
+
 
         particle.style.animationDuration =
-            (
-                3 +
-                Math.random() * 6
-            ) +
-            "s";
+            (3 + Math.random() * 6) + "s";
+
 
         particle.style.animationDelay =
-            (
-                -Math.random() * 5
-            ) +
-            "s";
+            (-Math.random() * 5) + "s";
+
 
         particle.style.width =
-            (
-                2 +
-                Math.random() * 5
-            ) +
-            "px";
+            (2 + Math.random() * 5) + "px";
+
 
         particle.style.height =
             particle.style.width;
+
 
         effects.appendChild(
             particle
@@ -1582,42 +2121,12 @@ function createParticles(){
 
 }
 
-function startSpecialEffect(){
 
-    changeBackground();
-
-    const effects =
-        document.getElementById(
-            "effects"
-        );
-
-    clearTimeout(
-        specialTimer
-    );
-
-    createParticles();
-
-    effects.classList.add(
-        "active"
-    );
-
-    specialTimer =
-        setTimeout(
-            function(){
-
-                effects.classList.remove(
-                    "active"
-                );
-
-            },
-            10000
-        );
-
-}
-
-/* =====================================================
+/* =========================
    START
-===================================================== */
+========================= */
+
+createParticles();
 
 createSongList();
 
